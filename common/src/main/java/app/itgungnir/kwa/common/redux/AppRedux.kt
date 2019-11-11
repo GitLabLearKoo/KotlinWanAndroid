@@ -7,8 +7,7 @@ import my.itgungnir.rxmvvm.core.redux.BaseRedux
 class AppRedux(context: Application) : BaseRedux<AppState>(
     context = context,
     initialState = AppState(),
-    reducer = AppReducer(),
-    middlewareList = listOf()
+    reducer = AppReducer()
 ) {
 
     companion object {

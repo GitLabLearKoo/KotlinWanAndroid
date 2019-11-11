@@ -9,6 +9,7 @@ import com.orhanobut.logger.Logger
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -21,9 +22,9 @@ class HttpClient private constructor() {
 
         private val instance by lazy { HttpClient() }
 
-        val api: HttpApi by lazy { HttpClient.instance.buildApi() }
+        val api: HttpApi by lazy { instance.buildApi() }
 
-        val api2: HttpApi by lazy { HttpClient.instance.buildApi2() }
+        val api2: HttpApi by lazy { instance.buildApi2() }
     }
 
     private fun buildApi() = Retrofit.Builder()
@@ -51,13 +52,15 @@ class HttpClient private constructor() {
         .build()
 
     private fun loggingInterceptor() =
-        HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
-            if (message.startsWith("{") && message.endsWith("}") ||
-                message.startsWith("[") && message.endsWith("]")
-            ) {
-                Logger.json(message)
-            } else {
-                Log.d(HTTP_LOG_TAG, message)
+        HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                if (message.startsWith("{") && message.endsWith("}") ||
+                    message.startsWith("[") && message.endsWith("]")
+                ) {
+                    Logger.json(message)
+                } else {
+                    Log.d(HTTP_LOG_TAG, message)
+                }
             }
         }).apply {
             level = if (BuildConfig.DEBUG) {
@@ -67,22 +70,24 @@ class HttpClient private constructor() {
             }
         }
 
-    private fun cookieInterceptor() = Interceptor { chain: Interceptor.Chain ->
-        // Request
-        val requestBuilder = chain.request().newBuilder()
-        AppRedux.instance.currState().cookies.forEach {
-            requestBuilder.addHeader("Cookie", it)
-        }
-        // Response
-        val response = chain.proceed(requestBuilder.build())
-        val cookieList = response.headers("Set-Cookie")
-        if (cookieList.isNotEmpty() && cookieList.any { it.startsWith("token_pass_wanandroid_com") }) {
-            val cookieSet = mutableSetOf<String>()
-            cookieList.forEach {
-                cookieSet.add(it)
+    private fun cookieInterceptor() = object : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            // Request
+            val requestBuilder = chain.request().newBuilder()
+            AppRedux.instance.currState().cookies.forEach {
+                requestBuilder.addHeader("Cookie", it)
             }
-            AppRedux.instance.dispatch(LocalizeCookies(cookieSet))
+            // Response
+            val response = chain.proceed(requestBuilder.build())
+            val cookieList = response.headers("Set-Cookie")
+            if (cookieList.isNotEmpty() && cookieList.any { it.startsWith("token_pass_wanandroid_com") }) {
+                val cookieSet = mutableSetOf<String>()
+                cookieList.forEach {
+                    cookieSet.add(it)
+                }
+                AppRedux.instance.dispatch(LocalizeCookies(cookieSet), listOf())
+            }
+            return response
         }
-        response
     }
 }
