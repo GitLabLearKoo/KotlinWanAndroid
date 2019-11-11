@@ -17,7 +17,7 @@ android {
     }
     signingConfigs {
         config {
-            storeFile file('D:/CodingTools/Android/itgungnir.jks')
+            storeFile file('/Users/wangzhiyu29/itgungnir.jks')
             storePassword 'android'
             keyAlias 'android'
             keyPassword 'android'

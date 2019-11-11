@@ -16,8 +16,6 @@ dependencies {
     // Kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-android-extensions-runtime:$kotlin_version"
-    api "org.jetbrains.anko:anko-sdk25:$anko_version"
-    api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
     // Support
     api "androidx.appcompat:appcompat:$appcompat_version"
     api "com.google.android.material:material:$material_version"
@@ -35,16 +33,17 @@ dependencies {
     api "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
     // Glide
     api "com.github.bumptech.glide:glide:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_compiler_version"
+    api "jp.wasabeef:glide-transformations:$glide_tranforms_version"
     // Widgets
     api "com.google.android:flexbox:$flex_version"
     // ITGungnir
-    api "com.github.ITGungnir:UIKit:$uikit_version"
     api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
     api "com.github.ITGungnir.GRouter:router_api:$router_version"
     api "com.github.ITGungnir:GPermission:$permission_version"
+    api "com.github.ITGungnir:GAdapter:$adapter_version"
     // Tools
-    api "net.danlew:android.joda:$joda_version"
+    api "joda-time:joda-time:$joda_version"
     api "com.google.code.gson:gson:$gson_version"
     api "com.orhanobut:logger:$logger_version"
     api "androidx.multidex:multidex:$dex_version"
