@@ -2,22 +2,25 @@ package app.itgungnir.kwa.support.search_result
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.SearchResultActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.support.R
 import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import kotlinx.android.synthetic.main.activity_search_result.*
 
 @Route(SearchResultActivity)
-class SearchResultActivity : BaseActivity() {
+class SearchResultActivity : AppCompatActivity() {
 
     private var listAdapter: EasyAdapter? = null
 
@@ -30,9 +33,14 @@ class SearchResultActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_search_result
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_search_result)
+        initComponent()
+        observeVM()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         val key = intent.extras?.getString("key") ?: ""
 
@@ -90,7 +98,7 @@ class SearchResultActivity : BaseActivity() {
         viewModel.getSearchResult(key)
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(SearchResultState::refreshing)
             .observe(this, Observer { refreshing ->

@@ -1,19 +1,22 @@
 package app.itgungnir.kwa.main.weixin
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
+import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.child.WeixinChildFragment
 import kotlinx.android.synthetic.main.fragment_weixin.*
-import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import my.itgungnir.ui.hideSoftInput
-import my.itgungnir.ui.html
 
-class WeixinFragment : BaseFragment() {
+class WeixinFragment : Fragment() {
 
     private val viewModel by lazy {
         buildFragmentViewModel(
@@ -22,9 +25,16 @@ class WeixinFragment : BaseFragment() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.fragment_weixin
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_weixin, container, false)
 
-    override fun initComponent() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initComponent()
+        observeVM()
+    }
+
+    private fun initComponent() {
 
         headBar.title("公众号")
 
@@ -58,21 +68,22 @@ class WeixinFragment : BaseFragment() {
         viewModel.getWeixinTabs()
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(WeixinState::tabs)
             .observe(this, Observer { tabs ->
                 tabs?.a?.let {
-                    viewPager.adapter = object : FragmentStatePagerAdapter(childFragmentManager) {
-                        override fun getItem(position: Int): Fragment =
-                            WeixinChildFragment.newInstance(it[position].id)
+                    viewPager.adapter = object :
+                        FragmentStatePagerAdapter(childFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+                    override fun getItem(position: Int): Fragment =
+                        WeixinChildFragment.newInstance(it[position].id)
 
-                        override fun getCount(): Int =
-                            it.size
+                    override fun getCount(): Int =
+                        it.size
 
-                        override fun getPageTitle(position: Int) =
-                            html(it[position].name)
-                    }
+                    override fun getPageTitle(position: Int) =
+                        html(it[position].name)
+                }
                 }
             })
 

@@ -1,27 +1,31 @@
 package app.itgungnir.kwa.main.main
 
+import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.simpleDialog
+import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
 import app.itgungnir.kwa.main.project.ProjectFragment
 import app.itgungnir.kwa.main.tree.TreeFragment
 import app.itgungnir.kwa.main.weixin.WeixinFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.color
-import app.itgungnir.kwa.common.widget.icon_font.IconFontView
+import org.jetbrains.anko.textColor
 import org.joda.time.DateTime
 
 @Route(MainActivity)
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
 
     private var lastTime = 0L
 
@@ -34,9 +38,14 @@ class MainActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_main
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        initComponent()
+        observeVM()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         viewModel.getLatestVersion()
 
@@ -94,7 +103,7 @@ class MainActivity : BaseActivity() {
         )
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         AppRedux.instance.pick(AppState::darkMode)
             .observe(this, Observer { darkMode ->
@@ -133,11 +142,9 @@ class MainActivity : BaseActivity() {
     }
 
     private fun startDownloadApk() {
-        viewModel.withState {
-            it.versionInfo?.let { data ->
-                val fileName = "KWA_${data.upgradeVersion.replace(".", "_")}.apk"
-                HttpUtil.instance.downloadApk(this, data.upgradeUrl, fileName)
-            }
+        viewModel.getState().versionInfo?.let { data ->
+            val fileName = "KWA_${data.upgradeVersion.replace(".", "_")}.apk"
+            HttpUtil.instance.downloadApk(this, data.upgradeUrl, fileName)
         }
     }
 

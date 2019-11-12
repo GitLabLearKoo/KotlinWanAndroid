@@ -4,10 +4,10 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_schedule.view.*
-import my.itgungnir.ui.color
-import my.itgungnir.ui.dp2px
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.rich_text.RichText

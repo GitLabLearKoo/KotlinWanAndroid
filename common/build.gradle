@@ -40,8 +40,9 @@ dependencies {
     // Widgets
     api "com.google.android:flexbox:$flex_version"
     api "com.scwang.smart:refresh-layout-kernel:$refresh_version"
+    api "com.scwang.smart:refresh-header-classics:$refresh_version"
     api "com.scwang.smart:refresh-footer-classics:$refresh_version"
-    api "com.just.agentweb:agentweb:$agent_web_version"
+    implementation "com.just.agentweb:agentweb:$agent_web_version"
     // ITGungnir
     api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
     api "com.github.ITGungnir.GRouter:router_api:$router_version"
@@ -50,7 +51,7 @@ dependencies {
     // Tools
     api "net.danlew:android.joda:$joda_version"
     api "com.google.code.gson:gson:$gson_version"
-    api "com.orhanobut:logger:$logger_version"
+    implementation "com.orhanobut:logger:$logger_version"
     api "androidx.multidex:multidex:$dex_version"
     api "com.tencent.bugly:crashreport:$bugly_sdk_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"

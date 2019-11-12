@@ -6,7 +6,11 @@ import android.content.res.Resources
 import android.os.Bundle
 import app.itgungnir.kwa.common.ADAPT_WIDTH
 
-class ScreenAdaptUtil : Util {
+class ScreenAdaptUtil private constructor() : Util {
+
+    companion object {
+        val instance by lazy { ScreenAdaptUtil() }
+    }
 
     override fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(AppActivityLifecycleCallback(application))

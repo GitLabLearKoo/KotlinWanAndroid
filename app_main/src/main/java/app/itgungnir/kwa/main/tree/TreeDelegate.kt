@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.common.HierarchyActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_tree.view.*
 import my.itgungnir.grouter.api.Router
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import my.itgungnir.ui.html
-import my.itgungnir.ui.onAntiShakeClick
 
 class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 

@@ -2,14 +2,14 @@ package app.itgungnir.kwa.support.schedule.menu
 
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.support.schedule.ScheduleState
-import kotlinx.android.synthetic.main.list_item_menu.view.*
-import my.itgungnir.ui.color
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.support.R
+import app.itgungnir.kwa.support.schedule.ScheduleState
+import kotlinx.android.synthetic.main.list_item_menu.view.*
 import org.jetbrains.anko.textColor
 
 val menuItemDiffer = object : Differ {

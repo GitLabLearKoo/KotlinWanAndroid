@@ -4,7 +4,7 @@ import android.app.Application
 import java.io.File
 import java.math.BigDecimal
 
-class CacheUtil : Util {
+class CacheUtil private constructor(): Util {
 
     lateinit var cacheFile: File
 

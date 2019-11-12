@@ -1,6 +1,8 @@
 package app.itgungnir.kwa.support.schedule
 
+import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.ScheduleActivity
 import app.itgungnir.kwa.common.ScheduleDoneActivity
@@ -11,11 +13,10 @@ import app.itgungnir.kwa.support.schedule.menu.MenuView
 import kotlinx.android.synthetic.main.activity_schedule.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 
 @Route(ScheduleActivity)
-class ScheduleActivity : BaseActivity() {
+class ScheduleActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
         buildActivityViewModel(
@@ -24,9 +25,14 @@ class ScheduleActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_schedule
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_schedule)
+        initComponent()
+        observeVM()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         headBar.title("我的日程")
             .back(getString(R.string.icon_back)) { finish() }
@@ -88,7 +94,7 @@ class ScheduleActivity : BaseActivity() {
         dropDownMenu.setDropDownMenu(popUpViews, MenuContent(this))
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(ScheduleState::type, ScheduleState::priority, ScheduleState::orderBy)
             .observe(this, Observer { states ->

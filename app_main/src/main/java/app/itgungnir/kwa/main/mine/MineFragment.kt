@@ -1,26 +1,30 @@
 package app.itgungnir.kwa.main.mine
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.main.mine.add.AddArticleDialog
-import my.itgungnir.grouter.api.Router
-import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
-import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.input.ProgressButton
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
-import my.itgungnir.ui.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import app.itgungnir.kwa.main.R
+import app.itgungnir.kwa.main.mine.add.AddArticleDialog
+import kotlinx.android.synthetic.main.fragment_mine.*
+import my.itgungnir.grouter.api.Router
+import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 
-class MineFragment : BaseFragment() {
+class MineFragment : Fragment() {
 
     private var listAdapter: EasyAdapter? = null
 
@@ -33,9 +37,16 @@ class MineFragment : BaseFragment() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.fragment_mine
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_mine, container, false)
 
-    override fun initComponent() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initComponent()
+        observeVM()
+    }
+
+    private fun initComponent() {
 
         headBar.addToolButton(getString(R.string.icon_add)) {
             AddArticleDialog().show(childFragmentManager, AddArticleDialog::class.java.name)
@@ -120,7 +131,7 @@ class MineFragment : BaseFragment() {
         }
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         AppRedux.instance.pick(AppState::userName, AppState::collectChanges)
             .observe(this, Observer {

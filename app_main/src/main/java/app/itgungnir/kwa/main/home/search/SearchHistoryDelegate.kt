@@ -3,15 +3,15 @@ package app.itgungnir.kwa.main.home.search
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearSearchHistory
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_search_history.view.*
-import my.itgungnir.ui.color
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.flex.FlexView
-import my.itgungnir.ui.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import org.jetbrains.anko.textColor
 
@@ -25,7 +25,7 @@ class SearchHistoryDelegate(
         container.apply {
             // Clear Button
             clearView.onAntiShakeClick(2000L) {
-                AppRedux.instance.dispatch(ClearSearchHistory)
+                AppRedux.instance.dispatch(ClearSearchHistory, listOf())
                 statusView.empty { }
                 clearView.apply {
                     isEnabled = false

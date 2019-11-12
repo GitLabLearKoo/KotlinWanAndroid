@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleState
 import app.itgungnir.kwa.support.schedule.ScheduleViewModel
@@ -15,8 +17,6 @@ import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_schedule.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
-import my.itgungnir.ui.hideSoftInput
-import my.itgungnir.ui.onAntiShakeClick
 import org.joda.time.DateTime
 
 class EditScheduleDialog(

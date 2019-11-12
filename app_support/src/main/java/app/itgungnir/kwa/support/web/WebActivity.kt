@@ -1,22 +1,22 @@
 package app.itgungnir.kwa.support.web
 
+import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.LoginActivity
-import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.support.R
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.color
-import my.itgungnir.ui.html
 import app.itgungnir.kwa.common.widget.input.ProgressButton
+import kotlinx.android.synthetic.main.activity_web.*
+import org.jetbrains.anko.share
 
 @Route(WebActivity)
-class WebActivity : BaseActivity() {
+class WebActivity : AppCompatActivity() {
 
     private var id: Int = -1
     private var originId: Int = -1
@@ -28,9 +28,14 @@ class WebActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_web
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_web)
+        initComponent()
+        observeVM()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         id = intent.getIntExtra("id", -1)
         originId = intent.getIntExtra("originId", -1)
@@ -83,7 +88,7 @@ class WebActivity : BaseActivity() {
         )
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         AppRedux.instance.pick(AppState::collectIds)
             .observe(this, Observer { collectIds ->

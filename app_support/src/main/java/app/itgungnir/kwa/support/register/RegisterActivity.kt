@@ -1,21 +1,22 @@
 package app.itgungnir.kwa.support.register
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.RegisterActivity
+import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_register.*
 import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.hideSoftInput
-import my.itgungnir.ui.onAntiShakeClick
 
 @Route(RegisterActivity)
-class RegisterActivity : BaseActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
         buildActivityViewModel(
@@ -24,10 +25,15 @@ class RegisterActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_register
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_register)
+        initComponent()
+        observeVM()
+    }
 
     @SuppressLint("CheckResult")
-    override fun initComponent() {
+    private fun initComponent() {
 
         headBar.title("用户注册")
             .back(getString(R.string.icon_back)) { finish() }
@@ -61,7 +67,7 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(RegisterState::succeed)
             .observe(this, Observer { succeed ->

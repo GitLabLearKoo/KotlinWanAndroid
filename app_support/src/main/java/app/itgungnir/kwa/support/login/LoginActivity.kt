@@ -1,10 +1,10 @@
 package app.itgungnir.kwa.support.login
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.LoginActivity
-import app.itgungnir.kwa.common.RegisterActivity
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.LocalizeUserInfo
 import app.itgungnir.kwa.support.R
@@ -13,13 +13,10 @@ import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_login.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.hideSoftInput
-import my.itgungnir.ui.onAntiShakeClick
 
 @Route(LoginActivity)
-class LoginActivity : BaseActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
         buildActivityViewModel(
@@ -28,10 +25,15 @@ class LoginActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_login
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+        initComponent()
+        observeVM()
+    }
 
     @SuppressLint("CheckResult")
-    override fun initComponent() {
+    private fun initComponent() {
 
         headBar.title("用户登录")
             .back(getString(R.string.icon_back)) { finish() }
@@ -70,13 +72,13 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(LoginState::userInfo)
             .observe(this, Observer { userInfo ->
                 userInfo?.a?.let {
                     AppRedux.instance.dispatch(
-                        LocalizeUserInfo(it.collectIds - -1, it.userName)
+                        LocalizeUserInfo(it.collectIds - -1, it.userName), listOf()
                     )
                     login.ready("登录")
                     finish()

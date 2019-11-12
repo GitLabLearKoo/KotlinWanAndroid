@@ -1,23 +1,27 @@
 package app.itgungnir.kwa.support.setting
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.*
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.util.CacheUtil
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.support.setting.delegate.*
-import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
-import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.support.R
+import app.itgungnir.kwa.support.setting.delegate.*
+import kotlinx.android.synthetic.main.activity_setting.*
+import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import org.jetbrains.anko.email
 
 @Route(SettingActivity)
-class SettingActivity : BaseActivity() {
+class SettingActivity : AppCompatActivity() {
 
     private var listAdapter: EasyAdapter? = null
 
@@ -28,9 +32,14 @@ class SettingActivity : BaseActivity() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.activity_setting
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_setting)
+        initComponent()
+        observeVM()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         headBar.title("设置")
             .back(getString(R.string.icon_back)) { finish() }
@@ -83,11 +92,11 @@ class SettingActivity : BaseActivity() {
                 when (id) {
                     1 -> {
                         CacheUtil.instance.clearCache()
-                        AppRedux.instance.dispatch(ToggleAutoCache)
+                        AppRedux.instance.dispatch(ToggleAutoCache, listOf())
                     }
-                    2 -> AppRedux.instance.dispatch(ToggleNoImage)
+                    2 -> AppRedux.instance.dispatch(ToggleNoImage, listOf())
                     3 -> {
-                        AppRedux.instance.dispatch(ToggleDarkMode)
+                        AppRedux.instance.dispatch(ToggleDarkMode, listOf())
                         when (AppRedux.instance.isDarkMode()) {
                             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                             else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -122,7 +131,7 @@ class SettingActivity : BaseActivity() {
             }))
             .addDelegate({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
                 this.simpleDialog(supportFragmentManager, "确定要退出当前登录吗？") {
-                    AppRedux.instance.dispatch(ClearUserInfo)
+                    AppRedux.instance.dispatch(ClearUserInfo, listOf())
                     finish()
                 }
             }))
@@ -131,7 +140,7 @@ class SettingActivity : BaseActivity() {
         viewModel.getSettingList(this)
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         AppRedux.instance.pick(AppState::autoCache, AppState::noImage, AppState::darkMode)
             .observe(this, Observer { states ->

@@ -12,8 +12,8 @@ class ScheduleViewModel : BaseViewModel<ScheduleState>(initialState = ScheduleSt
     private var pageNo: Int = 1
 
     fun getScheduleList() {
-        withState {
-            getScheduleList(it.type, it.priority, it.orderBy)
+        getState().apply {
+            getScheduleList(type, priority, orderBy)
         }
     }
 
@@ -67,8 +67,8 @@ class ScheduleViewModel : BaseViewModel<ScheduleState>(initialState = ScheduleSt
     }
 
     fun loadMoreScheduleList() {
-        withState {
-            loadMoreScheduleList(it.type, it.priority, it.orderBy)
+        getState().apply {
+            loadMoreScheduleList(type, priority, orderBy)
         }
     }
 

@@ -1,21 +1,27 @@
 package app.itgungnir.kwa.support.hierarchy
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import app.itgungnir.kwa.common.HierarchyActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.support.R
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_hierarchy.*
 import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import my.itgungnir.ui.html
 
 @Route(HierarchyActivity)
-class HierarchyActivity : BaseActivity() {
+class HierarchyActivity : AppCompatActivity() {
 
-    override fun layoutId(): Int = R.layout.activity_hierarchy
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_hierarchy)
+        initComponent()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
         val json = intent.extras?.getString("json")
         val vo = Gson().fromJson(json, TreeVO::class.java)
 
@@ -34,9 +40,6 @@ class HierarchyActivity : BaseActivity() {
             override fun getPageTitle(position: Int) =
                 html(vo.children[position].name)
         }
-    }
-
-    override fun observeVM() {
     }
 
     private data class TreeVO(

@@ -1,22 +1,30 @@
 package app.itgungnir.kwa.support.schedule.done
 
+import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.ScheduleDoneActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.support.schedule.ScheduleDelegate
-import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
-import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import app.itgungnir.kwa.support.R
+import app.itgungnir.kwa.support.schedule.ScheduleDelegate
+import kotlinx.android.synthetic.main.activity_schedule_done.*
+import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 
 @Route(ScheduleDoneActivity)
-class ScheduleDoneActivity : BaseActivity() {
+class ScheduleDoneActivity : AppCompatActivity() {
+
+    private var listAdapter: EasyAdapter? = null
+
+    private var footer: ListFooter? = null
 
     private val viewModel by lazy {
         buildActivityViewModel(
@@ -25,13 +33,14 @@ class ScheduleDoneActivity : BaseActivity() {
         )
     }
 
-    private var listAdapter: EasyAdapter? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_schedule_done)
+        initComponent()
+        observeVM()
+    }
 
-    private var footer: ListFooter? = null
-
-    override fun layoutId(): Int = R.layout.activity_schedule_done
-
-    override fun initComponent() {
+    private fun initComponent() {
 
         headBar.title("已完成日程")
             .back(getString(R.string.icon_back)) { finish() }
@@ -73,7 +82,7 @@ class ScheduleDoneActivity : BaseActivity() {
         viewModel.getScheduleList()
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(ScheduleDoneState::refreshing)
             .observe(this, Observer { refreshing ->

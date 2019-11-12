@@ -4,7 +4,11 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import app.itgungnir.kwa.common.redux.AppRedux
 
-class ThemeUtil : Util {
+class ThemeUtil private constructor() : Util {
+
+    companion object {
+        val instance by lazy { ThemeUtil() }
+    }
 
     override fun init(application: Application) {
 

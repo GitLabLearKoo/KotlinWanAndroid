@@ -129,7 +129,7 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
             .io2Main()
             .subscribe({
                 val targetId = if (originId < 1) articleId else originId
-                AppRedux.instance.dispatch(DisCollectArticle(targetId))
+                AppRedux.instance.dispatch(DisCollectArticle(targetId), listOf())
                 setState {
                     copy(
                         error = null

@@ -5,14 +5,21 @@ import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import app.itgungnir.kwa.common.util.GlideApp
+import app.itgungnir.kwa.common.widget.dialog.SimpleDialog
+import app.itgungnir.kwa.common.widget.list_footer.FooterStatus
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding2.view.RxView
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.contentView
+import org.jetbrains.anko.textColor
 import java.util.concurrent.TimeUnit
 
 /**
@@ -50,6 +57,50 @@ fun ImageView.load(imgRes: Int) =
         .error(R.mipmap.img_placeholder)
         .centerCrop()
         .into(this)
+
+/**
+ * 弹出SimpleDialog
+ */
+fun Context.simpleDialog(manager: FragmentManager, msg: String, onConfirm: (() -> Unit)? = null) =
+    SimpleDialog.Builder()
+        .backgroundColor(this.color(R.color.clr_dialog), 5F)
+        .dividerColor(this.color(R.color.clr_divider))
+        .message(msg, this.color(R.color.text_color_level_2))
+        .confirm(color = this.color(R.color.colorAccent)) { onConfirm?.invoke() }
+        .cancel(color = this.color(R.color.colorAccent))
+        .create()
+        .show(manager, SimpleDialog::class.java.name)
+
+/**
+ * 根据状态渲染ListFooter的UI
+ */
+fun renderFooter(view: View, status: FooterStatus.Status) {
+    view.backgroundColor = view.context.color(R.color.clr_divider)
+    val title = view.findViewById<TextView>(R.id.footerTitle)
+    val progress = view.findViewById<ProgressBar>(R.id.footerProgress)
+    title.textColor = view.context.color(R.color.clr_background)
+    when (status) {
+        FooterStatus.Status.PROGRESSING -> {
+            title.visibility = View.GONE
+            progress.visibility = View.VISIBLE
+        }
+        FooterStatus.Status.SUCCEED -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "加载成功"
+        }
+        FooterStatus.Status.NO_MORE -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "我是有底线的"
+        }
+        FooterStatus.Status.FAILED -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "加载失败，请重试"
+        }
+    }
+}
 
 /**
  * dp转px

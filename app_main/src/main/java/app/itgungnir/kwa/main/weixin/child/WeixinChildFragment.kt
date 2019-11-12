@@ -2,26 +2,34 @@ package app.itgungnir.kwa.main.weixin.child
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.WeixinState
 import app.itgungnir.kwa.main.weixin.WeixinViewModel
-import my.itgungnir.rxmvvm.core.mvvm.LazyFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import kotlinx.android.synthetic.main.fragment_weixin_child.*
 
-class WeixinChildFragment : LazyFragment() {
+class WeixinChildFragment : Fragment() {
 
     private var listAdapter: EasyAdapter? = null
 
     private var footer: ListFooter? = null
+
+    private var initialized: Boolean = false
 
     private val parentViewModel by lazy {
         buildFragmentViewModel(
@@ -47,9 +55,25 @@ class WeixinChildFragment : LazyFragment() {
         }
     }
 
-    override fun layoutId(): Int = R.layout.fragment_weixin_child
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_weixin_child, container, false)
 
-    override fun initComponent() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initComponent()
+        observeVM()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (initialized) {
+            return
+        }
+        onLazyLoad()
+        initialized = true
+    }
+
+    private fun initComponent() {
         weixinPage.apply {
             // Refresh Layout
             refreshLayout().setOnRefreshListener {
@@ -101,11 +125,11 @@ class WeixinChildFragment : LazyFragment() {
         }
     }
 
-    override fun onLazyLoad() {
+    private fun onLazyLoad() {
         flag()?.let { selfViewModel.getArticles(it, k) }
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         parentViewModel.pick(WeixinState::currTab, WeixinState::k)
             .observe(this, Observer { data ->

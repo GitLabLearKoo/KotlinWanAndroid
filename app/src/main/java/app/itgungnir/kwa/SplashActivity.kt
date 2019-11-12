@@ -9,6 +9,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.SplashActivity
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.http.io2Main
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.UpdateVersion
@@ -16,8 +18,6 @@ import io.reactivex.Single
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.permission.GPermission
-import my.itgungnir.ui.color
-import my.itgungnir.ui.dp2px
 import org.jetbrains.anko.*
 import java.util.concurrent.TimeUnit
 
@@ -52,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
             return
         }
 
-        AppRedux.instance.dispatch(UpdateVersion)
+        AppRedux.instance.dispatch(UpdateVersion, listOf())
 
         requestPermissions()
     }

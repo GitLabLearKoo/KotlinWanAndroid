@@ -11,13 +11,14 @@ class AppConfig private constructor() {
     fun init(application: Application) {
         listOf(
             CacheUtil.instance,
-            CrashDetectUtil(),
-            DateTimeUtil(),
-            LeakDetectUtil(),
-            LoggingUtil(),
-            ReduxUtil(),
-            ScreenAdaptUtil(),
-            ThemeUtil()
+            CrashDetectUtil.instance,
+            DateTimeUtil.instance,
+            LeakDetectUtil.instance,
+            LoggingUtil.instance,
+            ReduxUtil.instance,
+            ScreenAdaptUtil.instance,
+            ThemeUtil.instance,
+            RefreshUtil.instance
         ).map {
             it.init(application)
         }

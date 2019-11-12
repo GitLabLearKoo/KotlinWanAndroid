@@ -1,23 +1,33 @@
 package app.itgungnir.kwa.main.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.list_footer.ListFooter
+import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.delegate.BannerDelegate
 import app.itgungnir.kwa.main.home.delegate.HomeArticleDelegate
 import app.itgungnir.kwa.main.home.search.SearchDialog
-import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.list_footer.ListFooter
-import app.itgungnir.kwa.common.widget.status_view.StatusView
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : Fragment() {
+
+    private var listAdapter: EasyAdapter? = null
+
+    private var footer: ListFooter? = null
 
     private val viewModel by lazy {
         buildFragmentViewModel(
@@ -26,13 +36,16 @@ class HomeFragment : BaseFragment() {
         )
     }
 
-    override fun layoutId(): Int = R.layout.fragment_home
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_home, container, false)
 
-    private var listAdapter: EasyAdapter? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initComponent()
+        observeVM()
+    }
 
-    private var footer: ListFooter? = null
-
-    override fun initComponent() {
+    private fun initComponent() {
         // Head Bar
         headBar.title("首页")
             .addToolButton(getString(R.string.icon_search)) {
@@ -93,7 +106,7 @@ class HomeFragment : BaseFragment() {
         viewModel.getHomeData()
     }
 
-    override fun observeVM() {
+    private fun observeVM() {
 
         viewModel.pick(HomeState::refreshing)
             .observe(this, Observer { refreshing ->

@@ -20,7 +20,7 @@ class WebViewModel : BaseViewModel<WebState>(initialState = WebState()) {
             .handleResult()
             .io2Main()
             .subscribe({
-                AppRedux.instance.dispatch(CollectArticle(articleId))
+                AppRedux.instance.dispatch(CollectArticle(articleId), listOf())
                 setState {
                     copy(
                         error = null
@@ -43,7 +43,7 @@ class WebViewModel : BaseViewModel<WebState>(initialState = WebState()) {
             .handleResult()
             .io2Main()
             .subscribe({
-                AppRedux.instance.dispatch(DisCollectArticle(articleId))
+                AppRedux.instance.dispatch(DisCollectArticle(articleId), listOf())
                 setState {
                     copy(
                         error = null

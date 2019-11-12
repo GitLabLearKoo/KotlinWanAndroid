@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_hierarchy_article.view.*
 import my.itgungnir.grouter.api.Router
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import my.itgungnir.ui.html
-import my.itgungnir.ui.onAntiShakeClick
 
 class HierarchyChildDelegate : BaseDelegate<HierarchyChildState.HierarchyArticleVO>() {
 

@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.support.R

@@ -7,7 +7,11 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 
-class LoggingUtil : Util {
+class LoggingUtil private constructor() : Util {
+
+    companion object {
+        val instance by lazy { LoggingUtil() }
+    }
 
     override fun init(application: Application) {
 
