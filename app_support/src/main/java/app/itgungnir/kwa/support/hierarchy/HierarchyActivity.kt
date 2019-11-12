@@ -30,16 +30,17 @@ class HierarchyActivity : AppCompatActivity() {
 
         tabLayout.setupWithViewPager(viewPager)
 
-        viewPager.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int): Fragment =
-                HierarchyChildFragment.newInstance(vo.children[position].id)
+        viewPager.adapter =
+            object : FragmentStatePagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+                override fun getItem(position: Int): Fragment =
+                    HierarchyChildFragment.newInstance(vo.children[position].id)
 
-            override fun getCount(): Int =
-                vo.children.size
+                override fun getCount(): Int =
+                    vo.children.size
 
-            override fun getPageTitle(position: Int) =
-                html(vo.children[position].name)
-        }
+                override fun getPageTitle(position: Int) =
+                    html(vo.children[position].name)
+            }
     }
 
     private data class TreeVO(

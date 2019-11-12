@@ -18,9 +18,9 @@ android {
     signingConfigs {
         config {
             storeFile file('./itgungnir.jks')
-            storePassword "$storePassword"
-            keyAlias "$keyAlias"
-            keyPassword "$keyPassword"
+            storePassword "$my_store_pwd"
+            keyAlias "$my_key_alias"
+            keyPassword "$my_key_pwd"
         }
     }
     buildTypes {
