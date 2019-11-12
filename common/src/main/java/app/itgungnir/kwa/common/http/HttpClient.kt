@@ -85,7 +85,7 @@ class HttpClient private constructor() {
                 cookieList.forEach {
                     cookieSet.add(it)
                 }
-                AppRedux.instance.dispatch(LocalizeCookies(cookieSet), listOf())
+                AppRedux.instance.dispatch(LocalizeCookies(cookieSet))
             }
             return response
         }

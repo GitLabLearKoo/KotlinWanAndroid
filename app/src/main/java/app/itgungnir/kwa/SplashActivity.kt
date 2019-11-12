@@ -27,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // 使用Kotlin-anko绘制界面
         object : AnkoComponent<SplashActivity> {
             override fun createView(ui: AnkoContext<SplashActivity>): View = with(ui) {
                 verticalLayout {
@@ -52,13 +53,14 @@ class SplashActivity : AppCompatActivity() {
             return
         }
 
-        AppRedux.instance.dispatch(UpdateVersion, listOf())
+        AppRedux.instance.dispatch(UpdateVersion)
 
         requestPermissions()
     }
 
     private fun requestPermissions() {
         GPermission.with(this)
+            .showDialogAtPermissionRejection()
             .onGranted { postNavigate() }
             .onDenied { finish() }
             .request(

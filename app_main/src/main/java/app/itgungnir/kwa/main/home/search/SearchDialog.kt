@@ -30,7 +30,7 @@ class SearchDialog : FullScreenDialog() {
         searchBar.back(getString(R.string.icon_back)) { this.dismiss() }
             .doOnSearch {
                 if (it.isNotBlank()) {
-                    AppRedux.instance.dispatch(AddSearchHistory(it), listOf())
+                    AppRedux.instance.dispatch(AddSearchHistory(it))
                     navigate(it)
                 }
             }
@@ -39,7 +39,7 @@ class SearchDialog : FullScreenDialog() {
             .addDelegate(
                 isForViewType = { data -> data is SearchState.SearchHotKeyVO },
                 delegate = SearchHotKeyDelegate {
-                    AppRedux.instance.dispatch(AddSearchHistory(it), listOf())
+                    AppRedux.instance.dispatch(AddSearchHistory(it))
                     navigate(it)
                 })
             .addDelegate(

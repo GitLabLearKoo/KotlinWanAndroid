@@ -92,11 +92,11 @@ class SettingActivity : AppCompatActivity() {
                 when (id) {
                     1 -> {
                         CacheUtil.instance.clearCache()
-                        AppRedux.instance.dispatch(ToggleAutoCache, listOf())
+                        AppRedux.instance.dispatch(ToggleAutoCache)
                     }
-                    2 -> AppRedux.instance.dispatch(ToggleNoImage, listOf())
+                    2 -> AppRedux.instance.dispatch(ToggleNoImage)
                     3 -> {
-                        AppRedux.instance.dispatch(ToggleDarkMode, listOf())
+                        AppRedux.instance.dispatch(ToggleDarkMode)
                         when (AppRedux.instance.isDarkMode()) {
                             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                             else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -131,7 +131,7 @@ class SettingActivity : AppCompatActivity() {
             }))
             .addDelegate({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
                 this.simpleDialog(supportFragmentManager, "确定要退出当前登录吗？") {
-                    AppRedux.instance.dispatch(ClearUserInfo, listOf())
+                    AppRedux.instance.dispatch(ClearUserInfo)
                     finish()
                 }
             }))

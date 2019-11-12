@@ -25,7 +25,7 @@ class SearchHistoryDelegate(
         container.apply {
             // Clear Button
             clearView.onAntiShakeClick(2000L) {
-                AppRedux.instance.dispatch(ClearSearchHistory, listOf())
+                AppRedux.instance.dispatch(ClearSearchHistory)
                 statusView.empty { }
                 clearView.apply {
                     isEnabled = false

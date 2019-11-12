@@ -19,7 +19,7 @@ class AddArticleViewModel : BaseViewModel<AddArticleState>(initialState = AddArt
             .handleResult()
             .io2Main()
             .subscribe({
-                AppRedux.instance.dispatch(CollectArticle(it.id), listOf())
+                AppRedux.instance.dispatch(CollectArticle(it.id))
                 setState {
                     copy(
                         succeed = Unit,

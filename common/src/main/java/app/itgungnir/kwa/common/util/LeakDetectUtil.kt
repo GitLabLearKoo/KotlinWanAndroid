@@ -11,7 +11,8 @@ class LeakDetectUtil private constructor() : Util {
 
     override fun init(application: Application) {
         if (LeakCanary.isInAnalyzerProcess(application)) {
-            LeakCanary.install(application)
+            return;
         }
+        LeakCanary.install(application)
     }
 }
