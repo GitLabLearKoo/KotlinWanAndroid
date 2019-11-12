@@ -14,7 +14,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_schedule.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.dialog.NoTitleDialogFragment
+import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
 import my.itgungnir.ui.hideSoftInput
 import my.itgungnir.ui.onAntiShakeClick
 import org.joda.time.DateTime

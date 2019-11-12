@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="?android:selectableItemBackground">
 
-        <my.itgungnir.ui.icon_font.IconFontView
+        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
             android:id="@+id/iconView"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
@@ -31,7 +31,7 @@
             android:textSize="@dimen/text_size_normal"
             tools:ignore="RelativeOverlap" />
 
-        <my.itgungnir.ui.icon_font.IconFontView
+        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
             android:id="@+id/navigateView"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"

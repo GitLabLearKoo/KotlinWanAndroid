@@ -4,7 +4,6 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.http.HttpUtil
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.simpleDialog
@@ -14,13 +13,11 @@ import app.itgungnir.kwa.main.mine.MineFragment
 import app.itgungnir.kwa.main.project.ProjectFragment
 import app.itgungnir.kwa.main.tree.TreeFragment
 import app.itgungnir.kwa.main.weixin.WeixinFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.color
-import my.itgungnir.ui.icon_font.IconFontView
-import org.jetbrains.anko.textColor
+import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import org.joda.time.DateTime
 
 @Route(MainActivity)

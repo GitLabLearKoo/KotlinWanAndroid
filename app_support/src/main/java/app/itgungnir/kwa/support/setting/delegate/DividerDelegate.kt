@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.SettingState
-import my.itgungnir.ui.easy_adapter.BaseDelegate
-import my.itgungnir.ui.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 
 class DividerDelegate : BaseDelegate<SettingState.DividerVO>() {
 

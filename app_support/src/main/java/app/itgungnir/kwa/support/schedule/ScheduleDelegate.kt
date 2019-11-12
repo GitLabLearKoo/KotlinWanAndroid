@@ -8,9 +8,9 @@ import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_schedule.view.*
 import my.itgungnir.ui.color
 import my.itgungnir.ui.dp2px
-import my.itgungnir.ui.easy_adapter.BaseDelegate
-import my.itgungnir.ui.easy_adapter.EasyAdapter
-import my.itgungnir.ui.rich_text.RichText
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.rich_text.RichText
 import org.jetbrains.anko.backgroundDrawable
 
 class ScheduleDelegate(

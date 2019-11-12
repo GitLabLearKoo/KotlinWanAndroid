@@ -12,7 +12,7 @@
         android:textColor="@color/text_color_level_1"
         android:textSize="@dimen/text_size_normal" />
 
-    <my.itgungnir.ui.flex.ScrollableFlexView
+    <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
         android:id="@+id/childrenView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

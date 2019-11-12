@@ -5,7 +5,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <my.itgungnir.ui.icon_font.IconFontView
+    <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:textColor="@color/text_color_level_2"
         android:textSize="@dimen/text_size_normal" />
 
-    <my.itgungnir.ui.input.ProgressButton
+    <app.itgungnir.kwa.common.widget.input.ProgressButton
         android:id="@+id/button"
         style="@style/ProgressButtonStyle"
         android:layout_width="wrap_content"

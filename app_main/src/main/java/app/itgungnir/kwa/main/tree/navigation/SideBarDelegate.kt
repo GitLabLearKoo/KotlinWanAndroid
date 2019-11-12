@@ -5,8 +5,8 @@ import android.view.View
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_navigation_left.view.*
 import my.itgungnir.ui.color
-import my.itgungnir.ui.easy_adapter.BaseDelegate
-import my.itgungnir.ui.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import my.itgungnir.ui.onAntiShakeClick
 import org.jetbrains.anko.backgroundColor
 

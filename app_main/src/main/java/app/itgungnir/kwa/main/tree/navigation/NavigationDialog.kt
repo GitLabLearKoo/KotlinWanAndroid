@@ -8,11 +8,11 @@ import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_navigation.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import my.itgungnir.ui.dialog.FullScreenDialog
-import my.itgungnir.ui.easy_adapter.Differ
-import my.itgungnir.ui.easy_adapter.ListItem
-import my.itgungnir.ui.easy_adapter.bind
-import my.itgungnir.ui.easy_adapter.update
+import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.easy_adapter.update
 
 class NavigationDialog : FullScreenDialog() {
 

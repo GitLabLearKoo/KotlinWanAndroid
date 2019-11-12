@@ -8,7 +8,7 @@ import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.dialog_tools.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import my.itgungnir.ui.dialog.FullScreenDialog
+import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
 import my.itgungnir.ui.onAntiShakeClick
 
 class ToolsDialog : FullScreenDialog() {

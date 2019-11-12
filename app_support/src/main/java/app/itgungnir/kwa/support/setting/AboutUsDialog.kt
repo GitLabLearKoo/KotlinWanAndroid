@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.dialog_about_us.*
-import my.itgungnir.ui.dialog.NoTitleDialogFragment
+import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
 
 class AboutUsDialog : NoTitleDialogFragment() {
 

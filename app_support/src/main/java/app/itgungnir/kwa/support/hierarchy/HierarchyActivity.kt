@@ -5,10 +5,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.support.R
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_hierarchy.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
-import my.itgungnir.ui.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.ui.html
 
 @Route(HierarchyActivity)

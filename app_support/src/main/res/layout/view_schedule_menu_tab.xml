@@ -54,7 +54,7 @@
             android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_small" />
 
-        <my.itgungnir.ui.icon_font.IconFontView
+        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
             android:id="@+id/tabArrow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
             android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_small" />
 
-        <my.itgungnir.ui.icon_font.IconFontView
+        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
             android:id="@+id/tabArrow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
             android:textSize="@dimen/text_size_large" />
     </LinearLayout>
 
-    <my.itgungnir.ui.icon_font.IconFontView
+    <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/tab3"
         android:layout_width="0dp"
         android:layout_height="0dp"

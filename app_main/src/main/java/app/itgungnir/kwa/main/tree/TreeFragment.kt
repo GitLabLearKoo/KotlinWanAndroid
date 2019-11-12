@@ -3,18 +3,14 @@ package app.itgungnir.kwa.main.tree
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.tree.navigation.NavigationDialog
 import app.itgungnir.kwa.main.tree.tools.ToolsDialog
-import kotlinx.android.synthetic.main.fragment_tree.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.dp2px
-import my.itgungnir.ui.easy_adapter.EasyAdapter
-import my.itgungnir.ui.easy_adapter.bind
-import my.itgungnir.ui.status_view.StatusView
-import org.jetbrains.anko.bottomPadding
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.status_view.StatusView
 
 class TreeFragment : BaseFragment() {
 

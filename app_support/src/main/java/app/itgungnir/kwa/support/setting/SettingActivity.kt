@@ -4,21 +4,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.*
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.util.CacheUtil
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.delegate.*
-import kotlinx.android.synthetic.main.activity_setting.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.easy_adapter.Differ
-import my.itgungnir.ui.easy_adapter.EasyAdapter
-import my.itgungnir.ui.easy_adapter.ListItem
-import my.itgungnir.ui.easy_adapter.bind
-import org.jetbrains.anko.email
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 
 @Route(SettingActivity)
 class SettingActivity : BaseActivity() {

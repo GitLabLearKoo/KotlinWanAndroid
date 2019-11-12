@@ -4,19 +4,16 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.LoginActivity
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.support.R
-import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.color
 import my.itgungnir.ui.html
-import my.itgungnir.ui.input.ProgressButton
-import org.jetbrains.anko.share
+import app.itgungnir.kwa.common.widget.input.ProgressButton
 
 @Route(WebActivity)
 class WebActivity : BaseActivity() {

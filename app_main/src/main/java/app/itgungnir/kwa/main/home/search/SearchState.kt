@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.main.home.search
 
 import my.itgungnir.rxmvvm.core.mvvm.State
-import my.itgungnir.ui.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 
 data class SearchState(
     val items: List<ListItem> = listOf(),

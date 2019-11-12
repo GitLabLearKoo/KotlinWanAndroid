@@ -8,8 +8,8 @@ import app.itgungnir.kwa.main.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_tree.view.*
 import my.itgungnir.grouter.api.Router
-import my.itgungnir.ui.easy_adapter.BaseDelegate
-import my.itgungnir.ui.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import my.itgungnir.ui.html
 import my.itgungnir.ui.onAntiShakeClick
 

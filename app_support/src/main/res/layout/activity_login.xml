@@ -6,13 +6,13 @@
     android:background="@color/clr_dialog"
     android:orientation="vertical">
 
-    <my.itgungnir.ui.head_bar.HeadBar
+    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
         android:id="@+id/headBar"
         style="@style/HeadBarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <my.itgungnir.ui.input.TextInput
+    <app.itgungnir.kwa.common.widget.input.TextInput
         android:id="@+id/userNameInput"
         style="@style/TextInputStyle"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:layout_marginTop="50dp"
         app:ti_hint="@string/str_username_hint" />
 
-    <my.itgungnir.ui.input.PasswordInput
+    <app.itgungnir.kwa.common.widget.input.PasswordInput
         android:id="@+id/passwordInput"
         style="@style/PasswordInputStyle"
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="20dp"
         app:pi_hint="@string/str_password_hint" />
 
-    <my.itgungnir.ui.input.ProgressButton
+    <app.itgungnir.kwa.common.widget.input.ProgressButton
         android:id="@+id/login"
         style="@style/ProgressButtonStyle"
         android:layout_width="match_parent"

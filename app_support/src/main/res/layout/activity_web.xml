@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <my.itgungnir.ui.head_bar.HeadBar
+    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
         android:id="@+id/headBar"
         style="@style/HeadBarStyle"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <my.itgungnir.ui.browser.WebBrowser
+    <app.itgungnir.kwa.common.widget.browser.WebBrowser
         android:id="@+id/browserView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

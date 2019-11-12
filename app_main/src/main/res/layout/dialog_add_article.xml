@@ -6,13 +6,13 @@
     android:background="@color/clr_dialog"
     android:orientation="vertical">
 
-    <my.itgungnir.ui.head_bar.HeadBar
+    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
         android:id="@+id/headBar"
         style="@style/HeadBarStyle_Light"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <my.itgungnir.ui.input.ShadowInput
+    <app.itgungnir.kwa.common.widget.input.ShadowInput
         android:id="@+id/titleInput"
         style="@style/ShadowInputStyle"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:layout_marginEnd="15dp"
         app:si_hint="@string/str_add_article_title" />
 
-    <my.itgungnir.ui.input.ShadowInput
+    <app.itgungnir.kwa.common.widget.input.ShadowInput
         android:id="@+id/linkInput"
         style="@style/ShadowInputStyle"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="15dp"
         app:si_hint="@string/str_add_article_link" />
 
-    <my.itgungnir.ui.input.ProgressButton
+    <app.itgungnir.kwa.common.widget.input.ProgressButton
         android:id="@+id/addButton"
         style="@style/ProgressButtonStyle"
         android:layout_width="match_parent"

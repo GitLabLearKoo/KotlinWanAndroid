@@ -12,7 +12,7 @@
         android:background="@color/clr_dialog"
         tools:ignore="UselessParent">
 
-        <my.itgungnir.ui.head_bar.HeadBar
+        <app.itgungnir.kwa.common.widget.head_bar.HeadBar
             android:id="@+id/headBar"
             style="@style/HeadBarStyle_Light"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <my.itgungnir.ui.flex.ScrollableFlexView
+        <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
             android:id="@+id/children"
             android:layout_width="match_parent"
             android:layout_height="0dp"

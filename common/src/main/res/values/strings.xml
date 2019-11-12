@@ -42,6 +42,7 @@
     <string name="icon_feedback">\ue6f5</string>
     <string name="icon_about_us">\ue601</string>
     <string name="icon_browser">\ue763</string>
+    <string name="icon_menu">\ue710</string>
     <!-- 应用内文本 -->
     <string name="str_search">搜索</string>
     <string name="str_hot_key">热搜</string>
@@ -64,4 +65,6 @@
     <string name="str_schedule_life">生活</string>
     <string name="str_schedule_important">重要</string>
     <string name="str_schedule_normal">一般</string>
+    <!-- Behavior -->
+    <string name="behavior_fab">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
 </resources>

@@ -9,9 +9,9 @@ import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_search.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import my.itgungnir.ui.dialog.FullScreenDialog
-import my.itgungnir.ui.easy_adapter.EasyAdapter
-import my.itgungnir.ui.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 
 class SearchDialog : FullScreenDialog() {
 

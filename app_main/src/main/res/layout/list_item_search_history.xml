@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <my.itgungnir.ui.icon_font.IconFontView
+    <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/clearView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:textColor="@color/colorAccent" />
 
-    <my.itgungnir.ui.status_view.StatusView
+    <app.itgungnir.kwa.common.widget.status_view.StatusView
         android:id="@+id/statusView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,7 +7,7 @@ import app.itgungnir.kwa.common.http.io2Main
 import io.reactivex.Single
 import io.reactivex.functions.Function3
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
-import my.itgungnir.ui.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 
 @SuppressLint("CheckResult")
 class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {

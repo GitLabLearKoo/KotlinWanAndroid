@@ -6,10 +6,10 @@ import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleState
 import kotlinx.android.synthetic.main.list_item_menu.view.*
 import my.itgungnir.ui.color
-import my.itgungnir.ui.easy_adapter.BaseDelegate
-import my.itgungnir.ui.easy_adapter.Differ
-import my.itgungnir.ui.easy_adapter.EasyAdapter
-import my.itgungnir.ui.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import org.jetbrains.anko.textColor
 
 val menuItemDiffer = object : Differ {

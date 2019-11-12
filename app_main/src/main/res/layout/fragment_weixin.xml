@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <my.itgungnir.ui.head_bar.HeadBar
+    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
         android:id="@+id/headBar"
         style="@style/HeadBarStyle"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <my.itgungnir.ui.search_bar.SearchBar
+    <app.itgungnir.kwa.common.widget.search_bar.SearchBar
         android:id="@+id/searchBar"
         style="@style/SearchBarStyle"
         android:layout_width="match_parent"
