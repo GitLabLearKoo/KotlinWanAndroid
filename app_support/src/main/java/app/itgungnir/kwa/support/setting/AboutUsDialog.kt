@@ -9,6 +9,7 @@ import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.dialog_about_us.*
 import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
+import app.itgungnir.kwa.support.BuildConfig
 
 class AboutUsDialog : NoTitleDialogFragment() {
 
@@ -19,6 +20,6 @@ class AboutUsDialog : NoTitleDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        versionInfo.text = "V${AppRedux.instance.currState().version}"
+        versionInfo.text = "V${BuildConfig.VERSION_NAME}"
     }
 }
