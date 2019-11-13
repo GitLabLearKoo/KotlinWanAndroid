@@ -1,9 +1,10 @@
-package app.itgungnir.kwa.splash
+package app.itgungnir.kwa.main.main
 
 import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
+import app.itgungnir.kwa.main.BuildConfig
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
 /**
@@ -11,15 +12,21 @@ import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
  *
  * Created by ITGungnir on 2019-11-13
  */
-class SplashViewModel : BaseViewModel<SplashState>(initialState = SplashState()) {
+/**
+ * Description:
+ *
+ * Created by ITGungnir on 2019-11-13
+ */
+class MainViewModel : BaseViewModel<MainState>(initialState = MainState()) {
 
     @SuppressLint("CheckResult")
     fun checkForUpdates() {
         HttpClient.api2.versionInfo()
             .handleResult()
             .io2Main()
+            .filter { it.versionCode > BuildConfig.VERSION_CODE }
             .map {
-                SplashState.VersionVO(
+                MainState.VersionVO(
                     upgradeUrl = it.downloadUrl,
                     upgradeVersionCode = it.versionCode,
                     upgradeVersionName = it.versionName,

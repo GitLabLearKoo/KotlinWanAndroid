@@ -2,6 +2,11 @@ package app.itgungnir.kwa.main.main
 
 import my.itgungnir.rxmvvm.core.mvvm.State
 
+/**
+ * Description:
+ *
+ * Created by ITGungnir on 2019-11-13
+ */
 data class MainState(
     val versionInfo: VersionVO? = null,
     val error: Throwable? = null
@@ -15,7 +20,8 @@ data class MainState(
 
     data class VersionVO(
         val upgradeUrl: String,
-        val upgradeVersion: String,
+        val upgradeVersionCode: Int,
+        val upgradeVersionName: String,
         val upgradeDesc: String
     )
 }
