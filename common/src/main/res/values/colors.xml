@@ -2,8 +2,9 @@
 <resources>
     <!-- 主题颜色 -->
     <color name="colorPure">#FFFFFFFF</color>
-    <color name="colorPrimary">#FF707070</color>
-    <color name="colorAccent">#FFFF8F00</color>
+    <color name="colorPrimaryDark">#FF397E49</color>
+    <color name="colorPrimary">#FF489A5F</color>
+    <color name="colorAccent">#FFE8CF40</color>
     <!-- 样式颜色 -->
     <color name="clr_divider">#FFC2C2C2</color>
     <color name="clr_background">#FFF5F5F5</color>

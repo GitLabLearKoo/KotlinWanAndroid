@@ -2,14 +2,12 @@ package app.itgungnir.kwa.main.main
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.core.view.GravityCompat
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
-import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.main.R
@@ -20,66 +18,94 @@ import app.itgungnir.kwa.main.tree.TreeFragment
 import app.itgungnir.kwa.main.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import org.jetbrains.anko.textColor
-import org.joda.time.DateTime
+
+data class TabItem(
+    val title: String,
+    val unselectedIcon: String,
+    val selectedIcon: String
+)
 
 @Route(MainActivity)
 class MainActivity : AppCompatActivity() {
 
-    private var lastTime = 0L
-
-    private var isDarkMode = AppRedux.instance.isDarkMode()
-
-    private val viewModel by lazy {
-        buildActivityViewModel(
-            activity = this,
-            viewModelClass = MainViewModel::class.java
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initComponent()
-        observeVM()
+        initComponents()
     }
 
-    private fun initComponent() {
+    private fun initComponents() {
+        initMenuDrawer()
+        initBottomNavigation()
+        checkForUpdate()
+    }
 
-        viewModel.getLatestVersion()
+    /**
+     * 初始化DrawerLayout，设置其中菜单的点击事件，并与Toolbar联动
+     */
+    private fun initMenuDrawer() {
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_action_main_search -> Unit
+                R.id.menu_action_main_websites -> Unit
+                R.id.menu_action_main_navigation -> Unit
+            }
+            true
+        }
+        // 设置DrawerLayout与Toolbar联动
+        ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0).apply {
+            drawerLayout.addDrawerListener(this)
+            this.syncState()
+        }
+        // 设置NavigationView中菜单项的点击事件
+        navigationView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_nav_collection -> Unit
+                R.id.menu_nav_todo -> Unit
+                R.id.menu_nav_setting -> Unit
+                R.id.menu_nav_feedback -> Unit
+                R.id.menu_nav_about -> Unit
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+    }
 
+    /**
+     * 初始化底部导航栏
+     */
+    private fun initBottomNavigation() {
         val selectedColor = this.color(R.color.clr_icon_selected)
         val unSelectedColor = this.color(R.color.clr_icon_unselected)
-
         bottomTab.init(
             targetFrameId = R.id.fragment,
             fragmentManager = supportFragmentManager,
             items = listOf(
-                MainState.TabItem(
-                    "首页",
-                    getString(R.string.icon_home_normal),
-                    getString(R.string.icon_home_select)
+                TabItem(
+                    title = "首页",
+                    unselectedIcon = getString(R.string.icon_home_normal),
+                    selectedIcon = getString(R.string.icon_home_select)
                 ) to HomeFragment(),
-                MainState.TabItem(
-                    "知识体系",
-                    getString(R.string.icon_tree_normal),
-                    getString(R.string.icon_tree_select)
+                TabItem(
+                    title = "知识体系",
+                    unselectedIcon = getString(R.string.icon_tree_normal),
+                    selectedIcon = getString(R.string.icon_tree_select)
                 ) to TreeFragment(),
-                MainState.TabItem(
-                    "公众号",
-                    getString(R.string.icon_weixin_normal),
-                    getString(R.string.icon_weixin_select)
+                TabItem(
+                    title = "公众号",
+                    unselectedIcon = getString(R.string.icon_weixin_normal),
+                    selectedIcon = getString(R.string.icon_weixin_select)
                 ) to WeixinFragment(),
-                MainState.TabItem(
-                    "项目",
-                    getString(R.string.icon_project_normal),
-                    getString(R.string.icon_project_select)
+                TabItem(
+                    title = "项目",
+                    unselectedIcon = getString(R.string.icon_project_normal),
+                    selectedIcon = getString(R.string.icon_project_select)
                 ) to ProjectFragment(),
-                MainState.TabItem(
-                    "我的",
-                    getString(R.string.icon_mine_normal),
-                    getString(R.string.icon_mine_select)
+                TabItem(
+                    title = "我的",
+                    unselectedIcon = getString(R.string.icon_mine_normal),
+                    selectedIcon = getString(R.string.icon_mine_select)
                 ) to MineFragment()
             ),
             itemLayoutId = R.layout.list_item_main_bottom_tab,
@@ -103,58 +129,38 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun observeVM() {
-
-        AppRedux.instance.pick(AppState::darkMode)
-            .observe(this, Observer { darkMode ->
-                darkMode?.a?.let {
-                    if (it != isDarkMode) {
-                        recreate()
-                    }
-                    isDarkMode = it
-                }
-            })
-
-        viewModel.pick(MainState::versionInfo)
-            .observe(this, Observer { versionInfo ->
-                versionInfo?.a?.let {
-                    simpleDialog(
-                        manager = supportFragmentManager,
-                        msg = "发现新版本：\r\nV${it.upgradeVersion}\r\n\r\n${it.upgradeDesc}",
-                        onConfirm = { confirmUpdate() }
-                    )
-                }
-            })
+    /**
+     * 验证版本更新
+     */
+    private fun checkForUpdate() {
+        intent.getStringExtra("upgradeUrl")?.let {
+            val upgradeUrl = intent.getStringExtra("upgradeUrl")
+            val upgradeVersionName = intent.getStringExtra("upgradeVersionName")
+            val upgradeDesc = intent.getStringExtra("upgradeDesc")
+            simpleDialog(
+                manager = supportFragmentManager,
+                msg = "发现新版本：\r\nV$upgradeVersionName\r\n\r\n$upgradeDesc",
+                onConfirm = { confirmUpdate(upgradeUrl, upgradeVersionName) }
+            )
+        }
     }
 
-    private fun confirmUpdate() {
+    private fun confirmUpdate(upgradeUrl: String, upgradeVersionName: String) {
         if (!HttpUtil.instance.isNetworkConnected(this)) {
             simpleDialog(supportFragmentManager, "当前没有网络！")
             return
         }
         if (!HttpUtil.instance.isWiFiConnected(this)) {
             simpleDialog(supportFragmentManager, "当前处于非WIFI环境，确定要继续下载吗？") {
-                startDownloadApk()
+                startDownloadApk(upgradeUrl, upgradeVersionName)
             }
             return
         }
-        startDownloadApk()
+        startDownloadApk(upgradeUrl, upgradeVersionName)
     }
 
-    private fun startDownloadApk() {
-        viewModel.getState().versionInfo?.let { data ->
-            val fileName = "KWA_${data.upgradeVersion.replace(".", "_")}.apk"
-            HttpUtil.instance.downloadApk(this, data.upgradeUrl, fileName)
-        }
-    }
-
-    override fun onBackPressed() {
-        val currTime = DateTime.now().millis
-        if (currTime - lastTime < 1500) {
-            this.finish()
-        } else {
-            this.lastTime = currTime
-            popToast("再按一次退出应用")
-        }
+    private fun startDownloadApk(upgradeUrl: String, upgradeVersionName: String) {
+        val fileName = "KWA_${upgradeVersionName.replace(".", "_")}.apk"
+        HttpUtil.instance.downloadApk(this, upgradeUrl, fileName)
     }
 }

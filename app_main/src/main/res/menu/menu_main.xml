@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/menu_action_main_search"
+        android:icon="@drawable/icon_search"
+        android:title="搜索"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_action_main_more"
+        android:icon="@drawable/icon_more"
+        android:title="更多"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/menu_action_main_websites"
+                android:icon="@drawable/icon_manage"
+                android:title="常用网站"
+                app:showAsAction="withText" />
+
+            <item
+                android:id="@+id/menu_action_main_navigation"
+                android:icon="@drawable/icon_navigation"
+                android:title="导航"
+                app:showAsAction="withText" />
+        </menu>
+    </item>
+</menu>

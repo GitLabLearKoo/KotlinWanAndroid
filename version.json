@@ -1,7 +1,8 @@
 {
   "data": {
     "downloadUrl": "http://oss.pgyer.com/fba405e1d907c2dd529dc751ec31c1b2.apk?Expires=1559704901&OSSAccessKeyId=uKgrdAVRfXyY0LsE&response-content-disposition=attachment%3B+filename%3Dapp-release.apk&Signature=p7qi%2FuC7QzSVMMANlet9ZVmlklc%3D",
-    "version": "1.2.2",
+    "versionCode": 6,
+    "versionName": "1.2.2",
     "versionDesc": "主要更新：\r\n优化权限申请逻辑。"
   },
   "errorCode": 0,

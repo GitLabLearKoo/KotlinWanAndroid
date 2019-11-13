@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item android:title="我的">
+        <menu>
+            <item
+                android:id="@+id/menu_nav_collection"
+                android:icon="@drawable/icon_collection"
+                android:title="我的收藏" />
+            <item
+                android:id="@+id/menu_nav_todo"
+                android:icon="@drawable/icon_todo"
+                android:title="我的待办" />
+        </menu>
+    </item>
+
+    <item android:title="通用">
+        <menu>
+            <item
+                android:id="@+id/menu_nav_setting"
+                android:icon="@drawable/icon_setting"
+                android:title="设置" />
+            <item
+                android:id="@+id/menu_nav_feedback"
+                android:icon="@drawable/icon_feedback"
+                android:title="意见反馈" />
+            <item
+                android:id="@+id/menu_nav_about"
+                android:icon="@drawable/icon_about"
+                android:title="关于我们" />
+        </menu>
+    </item>
+
+</menu>

@@ -13,8 +13,20 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseFragment : Fragment() {
 
+    private var isInitialized: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(layoutId(), container, false)
+
+    override fun onResume() {
+        super.onResume()
+        if (!isInitialized) {
+            onLazyLoad()
+            isInitialized = true
+        }
+    }
+
+    fun onLazyLoad() {}
 
     abstract fun layoutId(): Int
 }
