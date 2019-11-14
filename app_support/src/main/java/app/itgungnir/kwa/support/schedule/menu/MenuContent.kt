@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.support.R
@@ -25,6 +24,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import org.jetbrains.anko.toast
 
 class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     LinearLayout(context, attrs, defStyleAttr) {
@@ -146,7 +146,7 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
         viewModel.pick(ScheduleState::error)
             .observe(context as ScheduleActivity, Observer { error ->
                 error?.a?.message?.let {
-                    (context as ScheduleActivity).popToast(it)
+                    (context as ScheduleActivity).toast(it)
                     footer?.onLoadFailed()
                 }
             })

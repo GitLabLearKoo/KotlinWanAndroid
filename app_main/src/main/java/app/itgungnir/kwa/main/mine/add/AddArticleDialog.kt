@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
 import app.itgungnir.kwa.main.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_add_article.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import org.jetbrains.anko.support.v4.toast
 
 class AddArticleDialog : NoTitleDialogFragment() {
 
@@ -81,7 +81,7 @@ class AddArticleDialog : NoTitleDialogFragment() {
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
                     addButton.ready("确定新增")
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

@@ -11,6 +11,10 @@ android {
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
+        // 配置参数到BuildConfig中：统一适配的屏幕尺寸
+        buildConfigField 'Float', 'SCREEN_WIDTH', screen_width
+        // 配置参数到BuildConfig中：是否使用设备上设置的字体大小
+        buildConfigField 'Boolean', "USE_SYSTEM_SP", use_system_sp
     }
 }
 

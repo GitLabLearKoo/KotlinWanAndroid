@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.LoginActivity
+import app.itgungnir.kwa.common.RegisterActivity
+import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.LocalizeUserInfo
 import app.itgungnir.kwa.support.R
@@ -14,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import org.jetbrains.anko.toast
 
 @Route(LoginActivity)
 class LoginActivity : AppCompatActivity() {
@@ -88,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.pick(LoginState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     login.ready("登录")
                 }
             })

@@ -7,13 +7,13 @@ import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.RegisterActivity
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_register.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import org.jetbrains.anko.toast
 
 @Route(RegisterActivity)
 class RegisterActivity : AppCompatActivity() {
@@ -80,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.pick(RegisterState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     register.ready("注册")
                 }
             })

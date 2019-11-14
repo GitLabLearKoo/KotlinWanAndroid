@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.WeixinState
@@ -22,6 +21,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import kotlinx.android.synthetic.main.fragment_weixin_child.*
+import org.jetbrains.anko.support.v4.toast
 
 class WeixinChildFragment : Fragment() {
 
@@ -177,7 +177,7 @@ class WeixinChildFragment : Fragment() {
         selfViewModel.pick(WeixinChildState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     footer?.onLoadFailed()
                 }
             })

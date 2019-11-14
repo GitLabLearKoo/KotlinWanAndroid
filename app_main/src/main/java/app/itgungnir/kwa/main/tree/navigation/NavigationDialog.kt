@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_navigation.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
@@ -13,6 +12,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.easy_adapter.update
+import org.jetbrains.anko.support.v4.toast
 
 class NavigationDialog : FullScreenDialog() {
 
@@ -103,7 +103,7 @@ class NavigationDialog : FullScreenDialog() {
         viewModel.pick(NavigationState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

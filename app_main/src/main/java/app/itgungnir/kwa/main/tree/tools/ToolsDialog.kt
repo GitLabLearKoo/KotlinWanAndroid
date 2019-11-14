@@ -3,13 +3,13 @@ package app.itgungnir.kwa.main.tree.tools
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.dialog_tools.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
+import org.jetbrains.anko.support.v4.toast
 
 class ToolsDialog : FullScreenDialog() {
 
@@ -59,7 +59,7 @@ class ToolsDialog : FullScreenDialog() {
         viewModel.pick(ToolsState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

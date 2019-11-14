@@ -2,14 +2,18 @@ package app.itgungnir.kwa.common.util
 
 import android.app.Activity
 import android.app.Application
-import android.content.res.Resources
+import android.content.ComponentCallbacks
+import android.content.res.Configuration
 import android.os.Bundle
-import app.itgungnir.kwa.common.ADAPT_WIDTH
+import app.itgungnir.kwa.common.BuildConfig
 
 class ScreenAdaptUtil private constructor() : Util {
 
     companion object {
         val instance by lazy { ScreenAdaptUtil() }
+
+        var sNonCompatDensity: Float = 0F
+        var sNonCompatScaledDensity: Float = 0F
     }
 
     override fun init(application: Application) {
@@ -20,22 +24,41 @@ class ScreenAdaptUtil private constructor() : Util {
         Application.ActivityLifecycleCallbacks {
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-            activity?.let {
-                val systemDM = Resources.getSystem().displayMetrics
-                val appDM = application.resources.displayMetrics
-                val activityDM = it.resources.displayMetrics
+            activity?.let { act ->
+                val appDisplayMetrics = application.resources.displayMetrics
 
-                activityDM.apply {
-                    density = systemDM.widthPixels / ADAPT_WIDTH
-                    scaledDensity = systemDM.density
-                    densityDpi = (160 * systemDM.density).toInt()
+                if (sNonCompatDensity == 0F) {
+                    sNonCompatDensity = appDisplayMetrics.density
+                    sNonCompatScaledDensity = appDisplayMetrics.scaledDensity
+                    application.registerComponentCallbacks(object : ComponentCallbacks {
+                        override fun onConfigurationChanged(newConfig: Configuration?) {
+                            newConfig?.let {
+                                if (it.fontScale > 0) {
+                                    sNonCompatScaledDensity = application.resources.displayMetrics.scaledDensity
+                                }
+                            }
+                        }
+
+                        override fun onLowMemory() {
+                        }
+                    })
                 }
 
-                appDM.apply {
-                    density = systemDM.density
-                    scaledDensity = systemDM.scaledDensity
-                    densityDpi = systemDM.densityDpi
+                val targetDensity = appDisplayMetrics.widthPixels / BuildConfig.SCREEN_WIDTH
+                val targetScaledDensity = when (BuildConfig.USE_SYSTEM_SP) {
+                    true -> targetDensity * (sNonCompatScaledDensity / sNonCompatDensity)
+                    else -> targetDensity
                 }
+                val targetDensityDpi = (160 * targetDensity).toInt()
+
+                appDisplayMetrics.density = targetDensity
+                appDisplayMetrics.scaledDensity = targetScaledDensity
+                appDisplayMetrics.densityDpi = targetDensityDpi
+
+                val activityDisplayMetrics = act.resources.displayMetrics
+                activityDisplayMetrics.density = targetDensity
+                activityDisplayMetrics.scaledDensity = targetScaledDensity
+                activityDisplayMetrics.densityDpi = targetDensityDpi
             }
         }
 

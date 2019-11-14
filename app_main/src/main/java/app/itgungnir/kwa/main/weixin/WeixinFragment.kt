@@ -10,11 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.html
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.child.WeixinChildFragment
 import kotlinx.android.synthetic.main.fragment_weixin.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import org.jetbrains.anko.support.v4.toast
 
 class WeixinFragment : Fragment() {
 
@@ -97,7 +97,7 @@ class WeixinFragment : Fragment() {
         viewModel.pick(WeixinState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

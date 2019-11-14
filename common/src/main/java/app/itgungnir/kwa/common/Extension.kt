@@ -7,56 +7,39 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import app.itgungnir.kwa.common.util.GlideApp
 import app.itgungnir.kwa.common.widget.dialog.SimpleDialog
 import app.itgungnir.kwa.common.widget.list_footer.FooterStatus
-import com.google.android.material.snackbar.Snackbar
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jakewharton.rxbinding2.view.RxView
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import org.jetbrains.anko.backgroundColor
-import org.jetbrains.anko.contentView
+import org.jetbrains.anko.px2dip
 import org.jetbrains.anko.textColor
 import java.util.concurrent.TimeUnit
 
 /**
- * Activity - 弹出SnackBar
- */
-fun AppCompatActivity.popToast(content: String) {
-    Snackbar.make(contentView!!, content, Snackbar.LENGTH_SHORT).show()
-}
-
-/**
- * Fragment - 弹出SnackBar
- */
-fun Fragment.popToast(content: String) {
-    Snackbar.make(view!!, content, Snackbar.LENGTH_SHORT).show()
-}
-
-/**
  * 加载网络图片到ImageView中
  */
-fun ImageView.load(url: String) =
-    GlideApp.with(this.context)
-        .load(url.replaceFirst("http://", "https://"))
-        .placeholder(R.mipmap.img_placeholder)
-        .error(R.mipmap.img_placeholder)
-        .centerCrop()
-        .into(this)
+fun ImageView.load(url: String) = GlideApp.with(this.context)
+    .load(url.replaceFirst("http://", "https://"))
+    .placeholder(R.mipmap.img_placeholder)
+    .error(R.mipmap.img_placeholder)
+    .transform(CenterCrop(), RoundedCornersTransformation(20, 0))
+    .into(this)
 
 /**
  * 加载本地res文件夹中的图片到ImageView中（目前仅供无图模式下使用）
  */
-fun ImageView.load(imgRes: Int) =
-    GlideApp.with(this.context)
-        .load(imgRes)
-        .placeholder(R.mipmap.img_placeholder)
-        .error(R.mipmap.img_placeholder)
-        .centerCrop()
-        .into(this)
+fun ImageView.load(imgRes: Int) = GlideApp.with(this.context)
+    .load(imgRes)
+    .placeholder(R.mipmap.img_placeholder)
+    .error(R.mipmap.img_placeholder)
+    .transform(CenterCrop(), RoundedCornersTransformation(20, 0))
+    .into(this)
 
 /**
  * 弹出SimpleDialog
@@ -116,17 +99,15 @@ fun Context.color(id: Int) = ContextCompat.getColor(this, id)
 /**
  * 隐藏软键盘
  */
-fun View.hideSoftInput() =
-    (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
-        ?.hideSoftInputFromWindow(windowToken, 0)
+fun View.hideSoftInput() = (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
+    ?.hideSoftInputFromWindow(windowToken, 0)
 
 /**
  * 防抖动的点击事件
  */
-fun View.onAntiShakeClick(milliSeconds: Long, block: (View) -> Unit) =
-    RxView.clicks(this)
-        .throttleFirst(milliSeconds, TimeUnit.MILLISECONDS)
-        .subscribe { block.invoke(this) }!!
+fun View.onAntiShakeClick(milliSeconds: Long = 500L, block: (View) -> Unit) = RxView.clicks(this)
+    .throttleFirst(milliSeconds, TimeUnit.MILLISECONDS)
+    .subscribe { block.invoke(this) }!!
 
 /**
  * 将HTML代码转换成带样式的字符串

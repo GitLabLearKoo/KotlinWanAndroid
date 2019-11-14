@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.dp2px
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.status_view.StatusView
@@ -19,6 +18,7 @@ import app.itgungnir.kwa.main.tree.tools.ToolsDialog
 import kotlinx.android.synthetic.main.fragment_tree.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import org.jetbrains.anko.bottomPadding
+import org.jetbrains.anko.support.v4.toast
 
 class TreeFragment : Fragment() {
 
@@ -90,7 +90,7 @@ class TreeFragment : Fragment() {
         viewModel.pick(TreeState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     treePage.statusView().empty { }
                 }
             })

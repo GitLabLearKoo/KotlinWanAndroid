@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.LoginActivity
+import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.common.widget.input.ProgressButton
 import app.itgungnir.kwa.support.R
+import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import app.itgungnir.kwa.common.widget.input.ProgressButton
-import kotlinx.android.synthetic.main.activity_web.*
 import org.jetbrains.anko.share
+import org.jetbrains.anko.toast
 
 @Route(WebActivity)
 class WebActivity : AppCompatActivity() {
@@ -109,7 +113,7 @@ class WebActivity : AppCompatActivity() {
         viewModel.pick(WebState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

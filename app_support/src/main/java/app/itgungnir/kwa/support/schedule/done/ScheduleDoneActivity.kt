@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.ScheduleDoneActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -18,6 +17,7 @@ import app.itgungnir.kwa.support.schedule.ScheduleDelegate
 import kotlinx.android.synthetic.main.activity_schedule_done.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import org.jetbrains.anko.toast
 
 @Route(ScheduleDoneActivity)
 class ScheduleDoneActivity : AppCompatActivity() {
@@ -112,7 +112,7 @@ class ScheduleDoneActivity : AppCompatActivity() {
         viewModel.pick(ScheduleDoneState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     footer?.onLoadFailed()
                 }
             })

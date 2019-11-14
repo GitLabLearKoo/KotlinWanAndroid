@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.*
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.util.CacheUtil
@@ -19,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import org.jetbrains.anko.email
+import org.jetbrains.anko.toast
 
 @Route(SettingActivity)
 class SettingActivity : AppCompatActivity() {
@@ -175,7 +175,7 @@ class SettingActivity : AppCompatActivity() {
         viewModel.pick(SettingState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

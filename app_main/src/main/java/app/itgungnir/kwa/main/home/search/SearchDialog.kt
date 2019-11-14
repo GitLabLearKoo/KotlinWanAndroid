@@ -2,7 +2,6 @@ package app.itgungnir.kwa.main.home.search
 
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SearchResultActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AddSearchHistory
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.main.R
@@ -12,6 +11,7 @@ import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import org.jetbrains.anko.support.v4.toast
 
 class SearchDialog : FullScreenDialog() {
 
@@ -65,7 +65,7 @@ class SearchDialog : FullScreenDialog() {
         viewModel.pick(SearchState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                 }
             })
     }

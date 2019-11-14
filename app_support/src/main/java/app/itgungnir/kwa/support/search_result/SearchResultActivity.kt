@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.SearchResultActivity
-import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.support.R
 import my.itgungnir.grouter.annotation.Route
@@ -18,6 +17,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import kotlinx.android.synthetic.main.activity_search_result.*
+import org.jetbrains.anko.toast
 
 @Route(SearchResultActivity)
 class SearchResultActivity : AppCompatActivity() {
@@ -128,7 +128,7 @@ class SearchResultActivity : AppCompatActivity() {
         viewModel.pick(SearchResultState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     footer?.onLoadFailed()
                 }
             })

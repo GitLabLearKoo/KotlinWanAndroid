@@ -23,6 +23,7 @@ import app.itgungnir.kwa.main.mine.add.AddArticleDialog
 import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import org.jetbrains.anko.support.v4.toast
 
 class MineFragment : Fragment() {
 
@@ -180,7 +181,7 @@ class MineFragment : Fragment() {
         viewModel.pick(MineState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    popToast(it)
+                    toast(it)
                     footer?.onLoadFailed()
                 }
             })
