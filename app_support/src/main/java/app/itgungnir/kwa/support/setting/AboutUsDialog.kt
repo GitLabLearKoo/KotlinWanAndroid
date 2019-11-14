@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.support.R
-import kotlinx.android.synthetic.main.dialog_about_us.*
 import app.itgungnir.kwa.common.widget.dialog.NoTitleDialogFragment
 import app.itgungnir.kwa.support.BuildConfig
+import app.itgungnir.kwa.support.R
+import kotlinx.android.synthetic.main.dialog_about_us.*
 
 class AboutUsDialog : NoTitleDialogFragment() {
 

@@ -1,5 +1,6 @@
 <resources>
 
+    <!-- 项目的主题 -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,16 +9,19 @@
         <item name="android:windowBackground">@color/clr_background</item>
     </style>
 
+    <!-- 设置Toolbar中按钮的颜色 -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
         <!-- 设置Toolbar的"更多"按钮的颜色 -->
         <item name="android:textColorSecondary">@color/colorPure</item>
     </style>
 
+    <!-- 设置Toolbar下拉菜单的样式 -->
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
         <item name="android:textColor">@color/text_color_level_1</item>
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
 
+    <!-- 设置Toolbar下拉菜单不遮盖按钮 -->
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
     </style>

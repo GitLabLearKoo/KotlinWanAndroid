@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.main.mine
 
-import my.itgungnir.rxmvvm.core.mvvm.State
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class MineState(
     val refreshing: Boolean = false,

@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.main.weixin.child
 
-import my.itgungnir.rxmvvm.core.mvvm.State
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class WeixinChildState(
     val refreshing: Boolean = false,

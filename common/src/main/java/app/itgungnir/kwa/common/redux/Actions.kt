@@ -30,7 +30,3 @@ data class DisCollectArticle(
 object ToggleAutoCache : Action
 
 object ToggleNoImage : Action
-
-object ToggleDarkMode : Action
-
-object UpdateVersion : Action

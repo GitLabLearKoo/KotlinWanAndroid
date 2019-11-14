@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.support.setting
 
-import my.itgungnir.rxmvvm.core.mvvm.State
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class SettingState(
     val items: List<ListItem> = listOf(),

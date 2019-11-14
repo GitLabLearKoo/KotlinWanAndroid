@@ -17,7 +17,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jakewharton.rxbinding2.view.RxView
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import org.jetbrains.anko.backgroundColor
-import org.jetbrains.anko.px2dip
 import org.jetbrains.anko.textColor
 import java.util.concurrent.TimeUnit
 

@@ -2,14 +2,14 @@
 <resources>
     <!-- 主题颜色 -->
     <color name="colorPure">#FFFFFFFF</color>
-    <color name="colorPrimaryDark">#FF397E49</color>
-    <color name="colorPrimary">#FF489A5F</color>
-    <color name="colorAccent">#FFE8CF40</color>
+    <color name="colorPrimaryDark">#FF3700B3</color>
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorAccent">#FF03DAC6</color>
     <!-- 样式颜色 -->
     <color name="clr_divider">#FFC2C2C2</color>
     <color name="clr_background">#FFF5F5F5</color>
     <color name="clr_mask">#99707070</color>
-    <color name="clr_icon_selected">#FF707070</color>
+    <color name="clr_icon_selected">#FF6200EE</color>
     <color name="clr_icon_unselected">#FFC2C2C2</color>
     <color name="clr_type_work">#FFB4004E</color>
     <color name="clr_type_learn">#FF087F23</color>

@@ -33,7 +33,4 @@ class AppRedux(context: Application) : BaseRedux<AppState>(
 
     // 判断当前是否处于无图模式
     fun isNoImage() = currState().noImage
-
-    // 判断当前是否处于夜间模式
-    fun isDarkMode() = currState().darkMode
 }

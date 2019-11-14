@@ -3,11 +3,11 @@ package app.itgungnir.kwa.support.setting.delegate
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.SettingState
 import kotlinx.android.synthetic.main.list_item_setting_navigable.view.*
-import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 
 class NavigableDelegate(
     private val navigateCallback: (Int) -> Unit

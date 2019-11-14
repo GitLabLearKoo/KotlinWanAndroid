@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.support.search_result
 
-import my.itgungnir.rxmvvm.core.mvvm.State
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class SearchResultState(
     val refreshing: Boolean = false,

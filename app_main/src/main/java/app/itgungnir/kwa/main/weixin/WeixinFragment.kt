@@ -75,15 +75,15 @@ class WeixinFragment : Fragment() {
                 tabs?.a?.let {
                     viewPager.adapter = object :
                         FragmentStatePagerAdapter(childFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-                    override fun getItem(position: Int): Fragment =
-                        WeixinChildFragment.newInstance(it[position].id)
+                        override fun getItem(position: Int): Fragment =
+                            WeixinChildFragment.newInstance(it[position].id)
 
-                    override fun getCount(): Int =
-                        it.size
+                        override fun getCount(): Int =
+                            it.size
 
-                    override fun getPageTitle(position: Int) =
-                        html(it[position].name)
-                }
+                        override fun getPageTitle(position: Int) =
+                            html(it[position].name)
+                    }
                 }
             })
 

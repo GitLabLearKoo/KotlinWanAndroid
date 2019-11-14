@@ -7,13 +7,13 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.dp2px
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.easy_adapter.update
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxItemDecoration
 import com.google.android.flexbox.FlexboxLayoutManager
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.easy_adapter.update
 
 class ScrollableFlexView @JvmOverloads constructor(
     context: Context,

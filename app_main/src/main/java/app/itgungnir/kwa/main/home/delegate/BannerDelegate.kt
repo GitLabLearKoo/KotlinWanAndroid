@@ -8,12 +8,12 @@ import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeState
 import kotlinx.android.synthetic.main.list_item_home_banner.view.*
 import my.itgungnir.grouter.api.Router
-import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 

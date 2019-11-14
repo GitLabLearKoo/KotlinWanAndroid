@@ -3,9 +3,9 @@ package app.itgungnir.kwa.common.widget.head_bar
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.R
-import kotlinx.android.synthetic.main.view_head_bar_menu_item.view.*
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import kotlinx.android.synthetic.main.view_head_bar_menu_item.view.*
 import org.jetbrains.anko.textColor
 
 class MenuDelegate(

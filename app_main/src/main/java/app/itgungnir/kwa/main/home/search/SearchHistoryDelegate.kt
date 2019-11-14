@@ -7,12 +7,12 @@ import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearSearchHistory
-import app.itgungnir.kwa.main.R
-import kotlinx.android.synthetic.main.list_item_search_history.view.*
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.flex.FlexView
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import app.itgungnir.kwa.main.R
+import kotlinx.android.synthetic.main.list_item_search_history.view.*
 import org.jetbrains.anko.textColor
 
 class SearchHistoryDelegate(

@@ -5,12 +5,12 @@ import android.view.View
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.list_item_navigation_right.view.*
 import my.itgungnir.grouter.api.Router
-import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 
 class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 

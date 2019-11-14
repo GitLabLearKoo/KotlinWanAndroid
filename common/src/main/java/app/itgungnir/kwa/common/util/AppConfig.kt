@@ -17,7 +17,6 @@ class AppConfig private constructor() {
             LoggingUtil.instance,
             ReduxUtil.instance,
             ScreenAdaptUtil.instance,
-            ThemeUtil.instance,
             RefreshUtil.instance
         ).map {
             it.init(application)

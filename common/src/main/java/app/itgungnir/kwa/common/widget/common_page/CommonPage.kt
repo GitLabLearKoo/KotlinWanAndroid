@@ -10,8 +10,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import app.itgungnir.kwa.common.R
-import kotlinx.android.synthetic.main.view_common_page.view.*
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import kotlinx.android.synthetic.main.view_common_page.view.*
 import org.jetbrains.anko.imageResource
 
 class CommonPage @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :

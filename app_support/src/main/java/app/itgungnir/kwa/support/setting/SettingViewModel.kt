@@ -27,12 +27,6 @@ class SettingViewModel : BaseViewModel<SettingState>(initialState = SettingState
                     "无图模式",
                     AppRedux.instance.isNoImage()
                 ),
-                SettingState.CheckableVO(
-                    3,
-                    context.getString(R.string.icon_dark_mode),
-                    "夜间模式",
-                    AppRedux.instance.isDarkMode()
-                ),
                 SettingState.DividerVO,
                 SettingState.DigitalVO(
                     4,

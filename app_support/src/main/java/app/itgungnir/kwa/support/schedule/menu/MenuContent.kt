@@ -10,6 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.list_footer.ListFooter
+import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleActivity
 import app.itgungnir.kwa.support.schedule.ScheduleDelegate
@@ -18,12 +24,6 @@ import app.itgungnir.kwa.support.schedule.ScheduleViewModel
 import app.itgungnir.kwa.support.schedule.dialog.EditScheduleDialog
 import kotlinx.android.synthetic.main.view_schedule_menu_content.view.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.list_footer.ListFooter
-import app.itgungnir.kwa.common.widget.status_view.StatusView
 import org.jetbrains.anko.toast
 
 class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :

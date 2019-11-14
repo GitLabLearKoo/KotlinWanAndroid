@@ -2,7 +2,6 @@ package app.itgungnir.kwa.support.setting
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.redux.*
@@ -95,14 +94,6 @@ class SettingActivity : AppCompatActivity() {
                         AppRedux.instance.dispatch(ToggleAutoCache)
                     }
                     2 -> AppRedux.instance.dispatch(ToggleNoImage)
-                    3 -> {
-                        AppRedux.instance.dispatch(ToggleDarkMode)
-                        when (AppRedux.instance.isDarkMode()) {
-                            true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        }
-                        recreate()
-                    }
                 }
             }))
             .addDelegate({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->
@@ -142,7 +133,7 @@ class SettingActivity : AppCompatActivity() {
 
     private fun observeVM() {
 
-        AppRedux.instance.pick(AppState::autoCache, AppState::noImage, AppState::darkMode)
+        AppRedux.instance.pick(AppState::autoCache, AppState::noImage)
             .observe(this, Observer { states ->
                 states?.let {
                     viewModel.setState {
@@ -152,8 +143,7 @@ class SettingActivity : AppCompatActivity() {
                                     item.copy(
                                         isChecked = when (item.id) {
                                             1 -> it.a
-                                            2 -> it.b
-                                            else -> it.c
+                                            else -> it.b
                                         }
                                     )
                                 } else {

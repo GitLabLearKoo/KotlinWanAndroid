@@ -5,10 +5,10 @@ import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.main.R
-import kotlinx.android.synthetic.main.list_item_search_hot.view.*
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.main.R
+import kotlinx.android.synthetic.main.list_item_search_hot.view.*
 import org.jetbrains.anko.textColor
 
 class SearchHotKeyDelegate(

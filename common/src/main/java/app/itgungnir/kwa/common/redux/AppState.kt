@@ -14,7 +14,5 @@ data class AppState(
     // 是否开启“自动缓存”
     val autoCache: Boolean = true,
     // 是否开启“无图模式”
-    val noImage: Boolean = false,
-    // 是否开启“夜间模式”
-    val darkMode: Boolean = false
+    val noImage: Boolean = false
 )
