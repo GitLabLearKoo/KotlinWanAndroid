@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.main.main
+package app.itgungnir.kwa.main
 
 import android.os.Bundle
 import android.widget.TextView
@@ -11,7 +11,6 @@ import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
 import app.itgungnir.kwa.main.project.ProjectFragment
@@ -52,9 +51,9 @@ class MainActivity : AppCompatActivity() {
     private fun initMenuDrawer() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.menu_action_main_search -> Unit
-                R.id.menu_action_main_websites -> Unit
-                R.id.menu_action_main_navigation -> Unit
+                R.id.menu_action_main_search -> Unit // WZY
+                R.id.menu_action_main_websites -> Unit // WZY
+                R.id.menu_action_main_navigation -> Unit // WZY
             }
             true
         }
@@ -66,11 +65,11 @@ class MainActivity : AppCompatActivity() {
         // 设置NavigationView中菜单项的点击事件
         navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.menu_nav_collection -> Unit
-                R.id.menu_nav_todo -> Unit
-                R.id.menu_nav_setting -> Unit
-                R.id.menu_nav_feedback -> Unit
-                R.id.menu_nav_about -> Unit
+                R.id.menu_nav_collection -> Unit // WZY
+                R.id.menu_nav_todo -> Unit // WZY
+                R.id.menu_nav_setting -> Unit // WZY
+                R.id.menu_nav_feedback -> Unit // WZY
+                R.id.menu_nav_about -> Unit // WZY
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true

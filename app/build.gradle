@@ -44,6 +44,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Project
     implementation project(':app_main')
+    implementation project(':app_account')
+    implementation project(':app_article')
     implementation project(':app_support')
     implementation project(':common')
     // Router

@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.main.main
+package app.itgungnir.kwa.main
 
 import my.itgungnir.rxmvvm.core.mvvm.State
 

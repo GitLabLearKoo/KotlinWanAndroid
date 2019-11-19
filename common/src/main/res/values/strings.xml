@@ -1,6 +1,6 @@
 <resources>
     <!-- 应用名称 -->
-    <string name="app_name">KotlinWanAndroid</string>
+    <string name="app_name">玩安卓</string>
     <!-- 图标 -->
     <string name="icon_back">\ue720</string>
     <string name="icon_empty">\ue6a6</string>

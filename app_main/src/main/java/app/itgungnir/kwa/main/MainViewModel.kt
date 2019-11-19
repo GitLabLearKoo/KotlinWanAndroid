@@ -1,17 +1,11 @@
-package app.itgungnir.kwa.main.main
+package app.itgungnir.kwa.main
 
 import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
-import app.itgungnir.kwa.main.BuildConfig
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
-/**
- * Description:
- *
- * Created by ITGungnir on 2019-11-13
- */
 /**
  * Description:
  *

@@ -1,5 +1,5 @@
 include ':app'
 
-include ':app_main', ':app_support'
+include ':app_main', ':app_account', ':app_article', ':app_support'
 
 include ':common'
