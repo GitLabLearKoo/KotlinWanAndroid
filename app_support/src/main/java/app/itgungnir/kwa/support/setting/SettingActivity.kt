@@ -40,8 +40,7 @@ class SettingActivity : AppCompatActivity() {
 
     private fun initComponent() {
 
-        headBar.title("设置")
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title("设置").back { finish() }
 
         listAdapter = list.bind(diffAnalyzer = object : Differ {
             override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =

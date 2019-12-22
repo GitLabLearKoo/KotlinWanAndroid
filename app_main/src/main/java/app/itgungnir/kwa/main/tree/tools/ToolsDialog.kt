@@ -24,8 +24,7 @@ class ToolsDialog : FullScreenDialog() {
 
     override fun initComponent() {
 
-        headBar.title("常用网站")
-            .back(getString(R.string.icon_back)) { this.dismiss() }
+        headBar.title("常用网站").back { this.dismiss() }
 
         children.bind<ToolsState.ToolTagVO>(
             layoutId = R.layout.list_item_tag,

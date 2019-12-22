@@ -12,7 +12,6 @@ import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.main.home.HomeFragment
-import app.itgungnir.kwa.main.mine.MineFragment
 import app.itgungnir.kwa.main.project.ProjectFragment
 import app.itgungnir.kwa.main.tree.TreeFragment
 import app.itgungnir.kwa.main.weixin.WeixinFragment
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     title = "知识体系"
                 ) to TreeFragment(),
                 MainState.TabItem(
-                    iconRes = R.drawable.icon_public,
+                    iconRes = R.drawable.icon_subscription,
                     title = "公众号"
                 ) to WeixinFragment(),
                 MainState.TabItem(

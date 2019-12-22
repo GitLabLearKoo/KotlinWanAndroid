@@ -15,13 +15,14 @@
         android:paddingBottom="10dp"
         tools:ignore="UselessParent">
 
-        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
+        <ImageView
             android:id="@+id/menuIcon"
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_icon"
-            android:textStyle="bold" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/app_name"
+            android:padding="5dp"
+            android:tint="@color/colorNavNormal" />
 
         <TextView
             android:id="@+id/menuTitle"

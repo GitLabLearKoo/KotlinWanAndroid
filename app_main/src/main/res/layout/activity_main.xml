@@ -38,24 +38,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <FrameLayout
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="?attr/actionBarSize"
+        <ImageView
+            android:id="@+id/main_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6.5dp"
+            android:contentDescription="@string/app_name"
+            android:foreground="@drawable/ripple_round"
+            android:padding="3dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_menu"
+            android:tint="@color/colorNavNormal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/main_menu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/app_name"
-                android:foreground="@drawable/ripple_round"
-                android:padding="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon_menu"
-                android:tint="@color/colorNavNormal" />
-        </FrameLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

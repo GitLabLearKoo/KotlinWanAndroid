@@ -34,8 +34,6 @@ class ProjectFragment : Fragment() {
 
     private fun initComponent() {
 
-        headBar.title("项目")
-
         tabLayout.setupWithViewPager(viewPager)
 
         // Init Data

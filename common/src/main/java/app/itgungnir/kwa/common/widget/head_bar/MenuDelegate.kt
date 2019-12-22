@@ -1,11 +1,13 @@
 package app.itgungnir.kwa.common.widget.head_bar
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.view_head_bar_menu_item.view.*
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.textColor
 
 class MenuDelegate(
@@ -19,7 +21,7 @@ class MenuDelegate(
     override fun onCreateVH(container: View) {
 
         container.apply {
-            menuIcon.textColor = menuIconColor
+            menuIcon.imageTintList = ColorStateList.valueOf(menuIconColor)
             menuTitle.textColor = menuTitleColor
         }
     }
@@ -33,7 +35,7 @@ class MenuDelegate(
                 clickCallback.invoke()
             }
 
-            menuIcon.text = item.iconFont
+            menuIcon.imageResource = item.iconRes
             menuTitle.text = item.title
         }
     }

@@ -49,9 +49,9 @@ class MineFragment : Fragment() {
 
     private fun initComponent() {
 
-        headBar.addToolButton(getString(R.string.icon_add)) {
+        headBar.addToolButton(R.drawable.icon_add) {
             AddArticleDialog().show(childFragmentManager, AddArticleDialog::class.java.name)
-        }.addToolButton(getString(R.string.icon_schedule)) {
+        }.addToolButton(R.drawable.icon_todo) {
             if (AppRedux.instance.isUserIn()) {
                 Router.instance.with(this)
                     .target(ScheduleActivity)
@@ -61,7 +61,7 @@ class MineFragment : Fragment() {
                     .target(LoginActivity)
                     .go()
             }
-        }.addToolButton(getString(R.string.icon_setting)) {
+        }.addToolButton(R.drawable.icon_setting) {
             Router.instance.with(this)
                 .target(SettingActivity)
                 .go()

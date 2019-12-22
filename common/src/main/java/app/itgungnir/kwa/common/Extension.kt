@@ -102,6 +102,13 @@ fun View.hideSoftInput() = (context.getSystemService(Context.INPUT_METHOD_SERVIC
     ?.hideSoftInputFromWindow(windowToken, 0)
 
 /**
+ * 显示/隐藏控件
+ */
+fun View.ifShow(flag: Boolean) = apply {
+    visibility = if (flag) View.VISIBLE else View.GONE
+}
+
+/**
  * 防抖动的点击事件
  */
 fun View.onAntiShakeClick(milliSeconds: Long = 500L, block: (View) -> Unit) = RxView.clicks(this)

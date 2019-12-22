@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.support.web
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -47,18 +48,15 @@ class WebActivity : AppCompatActivity() {
         val url = intent.getStringExtra("url")
 
         headBar.title(html(title))
-            .back(getString(R.string.icon_back)) { finish() }
-            .addMenuItem(getString(R.string.icon_share), "分享") {
+            .back { finish() }
+            .addMenuItem(R.drawable.icon_share, "分享") {
                 val currTitle = browserView.currentTitle()
                 val currUrl = browserView.currentUrl()
                 share("KotlinWanAndroid分享《$currTitle》专题：$currUrl", currTitle)
             }
-            .addMenuItem(getString(R.string.icon_browser), "用系统浏览器打开") {
-                Router.instance.with(this).target(browserView.currentUrl()).go()
-            }
 
         if (id > 0 && originId >= 0) {
-            headBar.addToolButton(getString(R.string.icon_uncollect)) {
+            headBar.addToolButton(R.drawable.icon_collect) {
                 if (AppRedux.instance.isUserIn()) {
                     when (AppRedux.instance.isCollected(id) || AppRedux.instance.isCollected(originId)) {
                         // 取消收藏
@@ -101,9 +99,11 @@ class WebActivity : AppCompatActivity() {
                         val flag = it.contains(id) || it.contains(originId)
                         headBar.updateToolButton(
                             0,
+                            false,
+                            R.drawable.icon_collect,
                             when (flag) {
-                                true -> getString(R.string.icon_collect)
-                                else -> getString(R.string.icon_uncollect)
+                                true -> color(R.color.colorNavActive)
+                                else -> color(R.color.colorNavNormal)
                             }
                         )
                     }

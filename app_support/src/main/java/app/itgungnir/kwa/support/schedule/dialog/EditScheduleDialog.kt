@@ -39,8 +39,8 @@ class EditScheduleDialog(
         super.onViewCreated(view, savedInstanceState)
 
         headBar.title("编辑日程")
-            .back(getString(R.string.icon_back)) { this.dismiss() }
-            .addToolButton(getString(R.string.icon_finish)) {
+            .back { this.dismiss() }
+            .addToolButton(R.drawable.icon_arrow_right) {
                 viewModel.finishSchedule(position, data.id)
             }
 

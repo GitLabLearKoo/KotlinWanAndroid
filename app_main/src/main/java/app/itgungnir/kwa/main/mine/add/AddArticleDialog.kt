@@ -37,8 +37,7 @@ class AddArticleDialog : NoTitleDialogFragment() {
     @SuppressLint("CheckResult")
     private fun initComponent() {
 
-        headBar.title("新增站外文章")
-            .back(getString(R.string.icon_back)) { this.dismiss() }
+        headBar.title("新增站外文章").back { this.dismiss() }
 
         Observable.combineLatest(
             arrayOf(

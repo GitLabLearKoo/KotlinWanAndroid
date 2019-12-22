@@ -35,12 +35,12 @@ class ScheduleActivity : AppCompatActivity() {
     private fun initComponent() {
 
         headBar.title("我的日程")
-            .back(getString(R.string.icon_back)) { finish() }
-            .addToolButton(getString(R.string.icon_add)) {
+            .back { finish() }
+            .addToolButton(R.drawable.icon_add) {
                 viewModel.setState { copy(dismissFlag = null) }
                 AddScheduleDialog().show(supportFragmentManager, AddScheduleDialog::class.java.name)
             }
-            .addToolButton(getString(R.string.icon_schedule_done)) {
+            .addToolButton(R.drawable.icon_todo) {
                 Router.instance.with(this)
                     .target(ScheduleDoneActivity)
                     .go()

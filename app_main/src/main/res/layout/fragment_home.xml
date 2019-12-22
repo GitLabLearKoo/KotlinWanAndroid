@@ -8,7 +8,9 @@
         android:id="@+id/headBar"
         style="@style/HeadBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp" />
 
     <app.itgungnir.kwa.common.widget.common_page.CommonPage
         android:id="@+id/homePage"

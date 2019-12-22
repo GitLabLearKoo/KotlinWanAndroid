@@ -39,8 +39,7 @@ class LoginActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     private fun initComponent() {
 
-        headBar.title("用户登录")
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title("用户登录").back { finish() }
 
         Observable.combineLatest(
             arrayOf(

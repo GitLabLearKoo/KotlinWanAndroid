@@ -35,8 +35,7 @@ class NavigationDialog : FullScreenDialog() {
         leftManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rightManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        headBar.title("导航")
-            .back(getString(R.string.icon_back)) { this.dismiss() }
+        headBar.title("导航").back { this.dismiss() }
 
         sideBar.bind(
             manager = leftManager,

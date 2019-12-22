@@ -1,17 +1,21 @@
 package app.itgungnir.kwa.common.widget.head_bar
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.ifShow
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import kotlinx.android.synthetic.main.view_head_bar.view.*
 import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.leftPadding
 import org.jetbrains.anko.textColor
 
@@ -19,7 +23,7 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
     RelativeLayout(context, attrs, defStyleAttr) {
 
     private var toolsLayout: LinearLayout? = null
-    private var menuView: IconFontView? = null
+    private var menuView: ImageView? = null
 
     private var textColor: Int = Color.WHITE
     private var showDivider: Boolean = false
@@ -43,7 +47,7 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
             recycle()
         }
 
-        back.textColor = textColor
+        back.imageTintList = ColorStateList.valueOf(textColor)
 
         title.textColor = textColor
 
@@ -55,7 +59,7 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
         }
 
         menu.apply {
-            this.textColor = this@HeadBar.textColor
+            this.imageTintList = ColorStateList.valueOf(textColor)
             setOnClickListener {
                 HeadBarMenu(context, menuBackground, menuIconColor, menuTitleColor).apply {
                     setItems(menuList)
@@ -67,45 +71,48 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
         menuView = menu
     }
 
-    fun back(iconFont: String, onBackPressed: () -> Unit): HeadBar {
+    fun back(onBackPressed: () -> Unit) = apply {
         back.apply {
-            text = iconFont
             visibility = View.VISIBLE
             this.onAntiShakeClick(2000L) {
                 onBackPressed.invoke()
             }
         }
         title.leftPadding = 0
-        return this
     }
 
-    fun title(titleStr: String): HeadBar {
+    fun title(titleStr: String) = apply {
         title.text = titleStr
-        return this
     }
 
-    fun addToolButton(iconFont: String, callback: () -> Unit): HeadBar {
+    fun addToolButton(iconRes: Int, callback: () -> Unit) = apply {
         val view = LayoutInflater.from(context).inflate(R.layout.view_head_bar_icon, toolsLayout, false)
-        view.findViewById<IconFontView>(R.id.icon).apply {
-            text = iconFont
-            this.textColor = this@HeadBar.textColor
+        view.findViewById<ImageView>(R.id.icon).apply {
+            this.imageResource = iconRes
             this.onAntiShakeClick(2000L) {
                 callback.invoke()
             }
         }
         toolsLayout?.addView(view)
-        return this
     }
 
-    fun addMenuItem(iconFont: String, title: String, callback: () -> Unit): HeadBar {
+    fun addMenuItem(iconRes: Int, title: String, callback: () -> Unit) = apply {
         menuView?.visibility = View.VISIBLE
-        menuList.add(MenuItem(iconFont, title, callback))
-        return this
+        menuList.add(MenuItem(iconRes, title, callback))
     }
 
-    fun updateToolButton(position: Int, iconFont: String) {
+    fun updateToolButton(position: Int, loading: Boolean, iconRes: Int, tintColor: Int) {
         toolsLayout?.getChildAt(position)?.let {
-            (it as IconFontView).text = iconFont
+            val icon = it.findViewById<ImageView>(R.id.icon)
+            val progress = it.findViewById<ProgressBar>(R.id.progressBar)
+            icon.ifShow(!loading)
+            progress.ifShow(loading)
+            if (!loading) {
+                icon.apply {
+                    imageResource = iconRes
+                    imageTintList = ColorStateList.valueOf(tintColor)
+                }
+            }
         }
     }
 

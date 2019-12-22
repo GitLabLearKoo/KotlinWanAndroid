@@ -19,6 +19,8 @@ import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.delegate.BannerDelegate
 import app.itgungnir.kwa.main.home.delegate.HomeArticleDelegate
 import app.itgungnir.kwa.main.home.search.SearchDialog
+import app.itgungnir.kwa.main.tree.navigation.NavigationDialog
+import app.itgungnir.kwa.main.tree.tools.ToolsDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import org.jetbrains.anko.support.v4.toast
@@ -48,7 +50,7 @@ class HomeFragment : Fragment() {
     private fun initComponent() {
         // Head Bar
         headBar.title("首页")
-            .addToolButton(getString(R.string.icon_search)) {
+            .addToolButton(R.drawable.icon_search) {
                 SearchDialog().show(childFragmentManager, SearchDialog::class.java.name)
             }
         // Common Page

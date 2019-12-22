@@ -43,10 +43,10 @@ class TreeFragment : Fragment() {
     private fun initComponent() {
         // Head Bar
         headBar.title("知识体系")
-            .addToolButton(getString(R.string.icon_tools)) {
+            .addToolButton(R.drawable.icon_hot) {
                 ToolsDialog().show(childFragmentManager, ToolsDialog::class.java.name)
             }
-            .addToolButton(getString(R.string.icon_navigation)) {
+            .addToolButton(R.drawable.icon_navigate) {
                 NavigationDialog().show(childFragmentManager, NavigationDialog::class.java.name)
             }
         // Common Page

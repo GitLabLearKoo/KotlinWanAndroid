@@ -36,8 +36,6 @@ class WeixinFragment : Fragment() {
 
     private fun initComponent() {
 
-        headBar.title("公众号")
-
         tabLayout.setupWithViewPager(viewPager)
 
         searchBar.doOnSearch {

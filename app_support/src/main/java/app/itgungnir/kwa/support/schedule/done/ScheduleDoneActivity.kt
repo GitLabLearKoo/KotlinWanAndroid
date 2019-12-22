@@ -42,8 +42,7 @@ class ScheduleDoneActivity : AppCompatActivity() {
 
     private fun initComponent() {
 
-        headBar.title("已完成日程")
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title("已完成日程").back { finish() }
 
         scheduleDonePage.apply {
             // Refresh Layout

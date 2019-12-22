@@ -44,8 +44,7 @@ class SearchResultActivity : AppCompatActivity() {
 
         val key = intent.extras?.getString("key") ?: ""
 
-        headBar.title("\"$key\"的搜索结果")
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title("\"$key\"的搜索结果").back { finish() }
 
         searchResultPage.apply {
             // Refresh Layout

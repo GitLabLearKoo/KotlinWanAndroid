@@ -35,8 +35,7 @@ class AddScheduleDialog : NoTitleDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        headBar.title("添加日程")
-            .back(getString(R.string.icon_back)) { this.dismiss() }
+        headBar.title("添加日程").back { this.dismiss() }
 
         dateInput.onAntiShakeClick(2000L) {
             it.hideSoftInput()

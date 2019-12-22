@@ -25,8 +25,7 @@ class HierarchyActivity : AppCompatActivity() {
         val json = intent.extras?.getString("json")
         val vo = Gson().fromJson(json, TreeVO::class.java)
 
-        headBar.title(vo.name)
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title(vo.name).back { finish() }
 
         tabLayout.setupWithViewPager(viewPager)
 

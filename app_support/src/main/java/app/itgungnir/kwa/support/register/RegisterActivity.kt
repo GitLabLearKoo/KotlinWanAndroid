@@ -35,8 +35,7 @@ class RegisterActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     private fun initComponent() {
 
-        headBar.title("用户注册")
-            .back(getString(R.string.icon_back)) { finish() }
+        headBar.title("用户注册").back { finish() }
 
         Observable.combineLatest(
             arrayOf(

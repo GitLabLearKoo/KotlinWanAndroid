@@ -4,17 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
-        android:id="@+id/headBar"
-        style="@style/HeadBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:paddingStart="55dp"
+        android:paddingEnd="0dp" />
 
     <app.itgungnir.kwa.common.widget.search_bar.SearchBar
         android:id="@+id/searchBar"
