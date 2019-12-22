@@ -3,7 +3,7 @@ ext {
     version_code = 6
     version_name = '1.2.2'
     // System configs
-    screen_width = '400F'
+    screen_width = '475F'
     use_system_sp = 'false'
     // Build
     gradle_version = '3.5.3'

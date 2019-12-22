@@ -28,7 +28,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                 render = { _, view, data ->
                     view.findViewById<ImageView>(R.id.imageView).apply {
                         when (AppRedux.instance.isNoImage()) {
-                            true -> load(R.mipmap.img_placeholder)
+                            true -> load(R.drawable.icon_developer)
                             else -> load(data.url)
                         }
                     }

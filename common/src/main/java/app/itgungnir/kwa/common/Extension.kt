@@ -25,8 +25,8 @@ import java.util.concurrent.TimeUnit
  */
 fun ImageView.load(url: String) = GlideApp.with(this.context)
     .load(url.replaceFirst("http://", "https://"))
-    .placeholder(R.mipmap.img_placeholder)
-    .error(R.mipmap.img_placeholder)
+    .placeholder(R.drawable.icon_developer)
+    .error(R.drawable.icon_developer)
     .transform(CenterCrop(), RoundedCornersTransformation(20, 0))
     .into(this)
 
@@ -35,8 +35,8 @@ fun ImageView.load(url: String) = GlideApp.with(this.context)
  */
 fun ImageView.load(imgRes: Int) = GlideApp.with(this.context)
     .load(imgRes)
-    .placeholder(R.mipmap.img_placeholder)
-    .error(R.mipmap.img_placeholder)
+    .placeholder(R.drawable.icon_developer)
+    .error(R.drawable.icon_developer)
     .transform(CenterCrop(), RoundedCornersTransformation(20, 0))
     .into(this)
 

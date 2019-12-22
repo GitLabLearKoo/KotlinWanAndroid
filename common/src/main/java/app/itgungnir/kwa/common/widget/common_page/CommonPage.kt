@@ -18,7 +18,7 @@ class CommonPage @JvmOverloads constructor(context: Context, attrs: AttributeSet
     CoordinatorLayout(context, attrs, defStyleAttr) {
 
     private var fabBackColor = Color.WHITE
-    private var fabSrc = R.drawable.svg_to_top
+    private var fabSrc = R.drawable.icon_about
     private var fabRippleColor = Color.GRAY
 
     private var refresh: SwipeRefreshLayout? = null

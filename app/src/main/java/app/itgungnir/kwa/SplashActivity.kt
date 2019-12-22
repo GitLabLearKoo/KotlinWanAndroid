@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
                 verticalLayout {
                     backgroundColor = this@SplashActivity.color(R.color.colorPure)
                     imageView {
-                        imageResource = R.mipmap.img_placeholder
+                        imageResource = R.drawable.icon_developer
                         scaleType = ImageView.ScaleType.CENTER_INSIDE
                     }.lparams(ui.ctx.dp2px(140F).toInt(), ui.ctx.dp2px(100F).toInt()) {
                         bottomMargin = ui.ctx.dp2px(50F).toInt()

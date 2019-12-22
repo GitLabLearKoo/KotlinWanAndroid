@@ -42,7 +42,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
             }
 
             if (AppRedux.instance.isNoImage()) {
-                coverView.load(R.mipmap.img_placeholder)
+                coverView.load(R.drawable.icon_developer)
             } else {
                 coverView.load(item.cover)
             }

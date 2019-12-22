@@ -7,7 +7,7 @@
         <menu>
             <item
                 android:id="@+id/menu_nav_collection"
-                android:icon="@drawable/icon_collection"
+                android:icon="@drawable/icon_collect"
                 android:title="我的收藏" />
             <item
                 android:id="@+id/menu_nav_todo"
