@@ -1,8 +1,9 @@
 package app.itgungnir.kwa.main
 
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
@@ -10,7 +11,6 @@ import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
 import app.itgungnir.kwa.common.simpleDialog
-import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
 import app.itgungnir.kwa.main.project.ProjectFragment
@@ -19,6 +19,7 @@ import app.itgungnir.kwa.main.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.textColor
 
 @Route(MainActivity)
@@ -49,18 +50,9 @@ class MainActivity : AppCompatActivity() {
      * 初始化DrawerLayout，设置其中菜单的点击事件，并与Toolbar联动
      */
     private fun initMenuDrawer() {
-        toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.menu_action_main_search -> Unit // WZY
-                R.id.menu_action_main_websites -> Unit // WZY
-                R.id.menu_action_main_navigation -> Unit // WZY
-            }
-            true
-        }
-        // 设置DrawerLayout与Toolbar联动
-        ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0).apply {
-            drawerLayout.addDrawerListener(this)
-            this.syncState()
+        // 点击菜单按钮弹出菜单
+        main_menu.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
         // 设置NavigationView中菜单项的点击事件
         navigationView.setNavigationItemSelectedListener { item ->
@@ -80,52 +72,42 @@ class MainActivity : AppCompatActivity() {
      * 初始化底部导航栏
      */
     private fun initBottomNavigation() {
-        val selectedColor = this.color(R.color.clr_icon_selected)
-        val unSelectedColor = this.color(R.color.clr_icon_unselected)
+        val selectedColor = this.color(R.color.colorNavActive)
+        val unSelectedColor = this.color(R.color.colorNavNormal)
         bottomTab.init(
             targetFrameId = R.id.fragment,
             fragmentManager = supportFragmentManager,
             items = listOf(
                 MainState.TabItem(
-                    title = "首页",
-                    unselectedIcon = getString(R.string.icon_home_normal),
-                    selectedIcon = getString(R.string.icon_home_select)
+                    iconRes = R.drawable.icon_home,
+                    title = "首页"
                 ) to HomeFragment(),
                 MainState.TabItem(
-                    title = "知识体系",
-                    unselectedIcon = getString(R.string.icon_tree_normal),
-                    selectedIcon = getString(R.string.icon_tree_select)
+                    iconRes = R.drawable.icon_hierarchy,
+                    title = "知识体系"
                 ) to TreeFragment(),
                 MainState.TabItem(
-                    title = "公众号",
-                    unselectedIcon = getString(R.string.icon_weixin_normal),
-                    selectedIcon = getString(R.string.icon_weixin_select)
+                    iconRes = R.drawable.icon_public,
+                    title = "公众号"
                 ) to WeixinFragment(),
                 MainState.TabItem(
-                    title = "项目",
-                    unselectedIcon = getString(R.string.icon_project_normal),
-                    selectedIcon = getString(R.string.icon_project_select)
-                ) to ProjectFragment(),
-                MainState.TabItem(
-                    title = "我的",
-                    unselectedIcon = getString(R.string.icon_mine_normal),
-                    selectedIcon = getString(R.string.icon_mine_select)
-                ) to MineFragment()
+                    iconRes = R.drawable.icon_project,
+                    title = "项目"
+                ) to ProjectFragment()
             ),
             itemLayoutId = R.layout.list_item_main_bottom_tab,
             render = { view, data, selected ->
-                val icon = view.findViewById<IconFontView>(R.id.iconView)
+                val icon = view.findViewById<ImageView>(R.id.iconView)
                 val title = view.findViewById<TextView>(R.id.titleView)
+                icon.imageResource = data.iconRes
                 title.text = data.title
                 when (selected) {
                     true -> {
-                        icon.text = data.selectedIcon
-                        icon.textColor = selectedColor
+                        icon.imageTintList = ColorStateList.valueOf(selectedColor)
                         title.textColor = selectedColor
                     }
                     false -> {
-                        icon.text = data.unselectedIcon
-                        icon.textColor = unSelectedColor
+                        icon.imageTintList = ColorStateList.valueOf(unSelectedColor)
                         title.textColor = unSelectedColor
                     }
                 }

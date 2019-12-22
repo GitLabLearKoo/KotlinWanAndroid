@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- 主题颜色 -->
-    <color name="colorPure">#FFFFFFFF</color>
-    <color name="colorPrimaryDark">#FF0750C0</color>
-    <color name="colorPrimary">#FF2A83E1</color>
-    <color name="colorAccent">#FF03DAC6</color>
+    <color name="colorTheme">#FFFFFFFF</color>
+    <color name="colorNavNormal">#FF666666</color>
+    <color name="colorNavActive">#FFFF6A33</color>
     <!-- 样式颜色 -->
-    <color name="clr_divider">#FFC2C2C2</color>
-    <color name="clr_background">#FFF5F5F5</color>
+    <color name="clr_divider">#FFF2F2F2</color>
     <color name="clr_mask">#99707070</color>
+    <color name="clr_pb_enabled">#FF707070</color>
+    <color name="clr_pb_disabled">#FFC2C2C2</color>
+    <!-- 文本颜色 -->
+    <color name="text_color_level_1">#FF373737</color>
+    <color name="text_color_level_2">#FF707070</color>
+    <color name="text_color_level_3">#FFAEAEAE</color>
+
+    <!-- ToDeprecate -->
+    <color name="clr_background">#FFF5F5F5</color>
     <color name="clr_icon_selected">#FF2A83E1</color>
     <color name="clr_icon_unselected">#FFC2C2C2</color>
     <color name="clr_type_work">#FFB4004E</color>
@@ -18,13 +25,9 @@
     <color name="clr_priority_normal">#FF29B6F6</color>
     <color name="clr_bottom_bar">#FFFFFFFF</color>
     <color name="clr_dialog">#FFFFFFFF</color>
-    <color name="clr_pb_enabled">#FF707070</color>
-    <color name="clr_pb_disabled">#FFC2C2C2</color>
-    <!-- 文本颜色 -->
-    <color name="text_color_level_1">#FF373737</color>
-    <color name="text_color_level_2">#FF707070</color>
-    <color name="text_color_level_3">#FFAEAEAE</color>
     <color name="text_color_head_bar">#FFFFFFFF</color>
     <color name="text_color_pb_enabled">#FFFFFFFF</color>
     <color name="text_color_pb_disabled">#FFF5F5F5</color>
+    <color name="colorPure">#FFFFFFFF</color>
+    <color name="colorPrimary">#FFFFFFFF</color>
 </resources>

@@ -2,49 +2,35 @@
 
     <!-- 项目的主题 -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorTheme</item>
+        <item name="colorPrimaryDark">@color/colorTheme</item>
+        <item name="colorAccent">@color/colorNavActive</item>
+        <item name="android:statusBarColor">@color/colorTheme</item>
         <!-- 设置应用内部统一的界面背景色 -->
-        <item name="android:windowBackground">@color/clr_background</item>
-    </style>
-
-    <!-- 设置Toolbar中按钮的颜色 -->
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
-        <!-- 设置Toolbar的"更多"按钮的颜色 -->
-        <item name="android:textColorSecondary">@color/colorPure</item>
-    </style>
-
-    <!-- 设置Toolbar下拉菜单的样式 -->
-    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
-        <item name="android:textColor">@color/text_color_level_1</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
-    </style>
-
-    <!-- 设置Toolbar下拉菜单不遮盖按钮 -->
-    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
-        <item name="overlapAnchor">false</item>
+        <item name="android:windowBackground">@color/colorTheme</item>
+        <!-- 设置状态栏文本颜色 -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="HeadBarStyle">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/colorTheme</item>
         <item name="hb_showDivider">false</item>
-        <item name="hb_textColor">@color/text_color_head_bar</item>
+        <item name="hb_textColor">@color/colorNavNormal</item>
     </style>
 
     <style name="HeadBarStyle_Light">
-        <item name="android:background">@color/clr_dialog</item>
+        <item name="android:background">@color/colorTheme</item>
         <item name="hb_showDivider">true</item>
         <item name="hb_dividerColor">@color/clr_divider</item>
         <item name="hb_textColor">@color/text_color_level_1</item>
     </style>
 
     <style name="TabLayoutStyle">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="tabIndicatorColor">@color/text_color_head_bar</item>
+        <item name="android:background">@color/colorTheme</item>
+        <item name="tabIndicatorColor">@color/colorNavNormal</item>
         <item name="tabIndicatorHeight">5dp</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabSelectedTextColor">@color/text_color_head_bar</item>
+        <item name="tabSelectedTextColor">@color/text_color_level_1</item>
         <item name="tabTextColor">@color/text_color_level_3</item>
     </style>
 
@@ -68,18 +54,18 @@
     <style name="ProgressButtonStyle">
         <item name="pb_cornerRadius">3dp</item>
         <item name="pb_disabledColor">@color/clr_pb_disabled</item>
-        <item name="pb_disabledTextColor">@color/text_color_pb_disabled</item>
+        <item name="pb_disabledTextColor">@color/text_color_level_1</item>
         <item name="pb_enabledColor">@color/clr_pb_enabled</item>
-        <item name="pb_enabledTextColor">@color/text_color_pb_enabled</item>
+        <item name="pb_enabledTextColor">@color/text_color_level_1</item>
     </style>
 
     <style name="CommonPageStyle">
-        <item name="cp_fabBackColor">@color/colorPrimary</item>
+        <item name="cp_fabBackColor">@color/colorTheme</item>
         <item name="cp_fabRippleColor">@color/text_color_level_3</item>
     </style>
 
     <style name="ShadowInputStyle">
-        <item name="android:background">@color/clr_background</item>
+        <item name="android:background">@color/colorTheme</item>
         <item name="si_iconFont">@string/icon_clear_text</item>
         <item name="si_iconColor">@color/text_color_level_2</item>
         <item name="si_hintColor">@color/text_color_level_3</item>

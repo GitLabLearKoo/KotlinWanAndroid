@@ -13,9 +13,8 @@ data class MainState(
 ) : State {
 
     data class TabItem(
-        val title: String,
-        val unselectedIcon: String,
-        val selectedIcon: String
+        val iconRes: Int,
+        val title: String
     )
 
     data class VersionVO(

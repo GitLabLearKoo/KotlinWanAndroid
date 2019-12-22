@@ -45,7 +45,7 @@ fun ImageView.load(imgRes: Int) = GlideApp.with(this.context)
  */
 fun Context.simpleDialog(manager: FragmentManager, msg: String, onConfirm: (() -> Unit)? = null) =
     SimpleDialog.Builder()
-        .backgroundColor(this.color(R.color.clr_dialog), 5F)
+        .backgroundColor(this.color(R.color.colorTheme), 5F)
         .dividerColor(this.color(R.color.clr_divider))
         .message(msg, this.color(R.color.text_color_level_2))
         .confirm(color = this.color(R.color.colorAccent)) { onConfirm?.invoke() }
@@ -60,7 +60,7 @@ fun renderFooter(view: View, status: FooterStatus.Status) {
     view.backgroundColor = view.context.color(R.color.clr_divider)
     val title = view.findViewById<TextView>(R.id.footerTitle)
     val progress = view.findViewById<ProgressBar>(R.id.footerProgress)
-    title.textColor = view.context.color(R.color.clr_background)
+    title.textColor = view.context.color(R.color.colorTheme)
     when (status) {
         FooterStatus.Status.PROGRESSING -> {
             title.visibility = View.GONE

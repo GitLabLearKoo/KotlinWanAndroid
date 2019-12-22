@@ -36,7 +36,9 @@ class SplashActivity : AppCompatActivity() {
                     imageView {
                         imageResource = R.drawable.icon_developer
                         scaleType = ImageView.ScaleType.CENTER_INSIDE
-                    }.lparams(ui.ctx.dp2px(140F).toInt(), ui.ctx.dp2px(100F).toInt()) {
+                    }.lparams(matchParent, wrapContent) {
+                        leftMargin = ui.ctx.dp2px(50F).toInt()
+                        rightMargin = ui.ctx.dp2px(50F).toInt()
                         bottomMargin = ui.ctx.dp2px(50F).toInt()
                     }
                 }.apply {

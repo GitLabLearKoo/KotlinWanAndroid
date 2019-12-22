@@ -3,23 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="?android:attr/selectableItemBackgroundBorderless"
     android:gravity="center"
     android:orientation="vertical">
 
-    <app.itgungnir.kwa.common.widget.icon_font.IconFontView
+    <ImageView
         android:id="@+id/iconView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_icon"
-        tools:text="@string/icon_back" />
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/icon_home" />
 
     <TextView
         android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="-3dp"
         tools:text="@string/app_name"
-        tools:textSize="@dimen/text_size_normal" />
+        tools:textSize="@dimen/text_size_tiny" />
 
 </LinearLayout>
