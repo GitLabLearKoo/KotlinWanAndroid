@@ -1,5 +1,7 @@
 include ':app'
 
-include ':app_main', ':app_account', ':app_article', ':app_support'
+include ':app-article', ':app-account', ':app-tools'
 
 include ':common'
+
+include ':common-http', ':common-util', ':common-widget'

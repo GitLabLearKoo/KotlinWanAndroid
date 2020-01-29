@@ -108,4 +108,4 @@
 
 # 不混淆本项目中的部分类
 -keep class app.itgungnir.kwa.common.http.** {*;}
--keep class app.itgungnir.kwa.common.dto.** {*;}
+-keep class app.itgungnir.kwa.common.http.dto.** {*;}

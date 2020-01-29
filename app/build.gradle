@@ -43,11 +43,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Project
-    implementation project(':app_main')
-    implementation project(':app_account')
-    implementation project(':app_article')
-    implementation project(':app_support')
+    implementation project(':app-account')
+    implementation project(':app-article')
+    implementation project(':app-tools')
     implementation project(':common')
     // Router
     kapt "com.github.ITGungnir.GRouter:router_compiler:$router_version"
+    // Tools
+    api "androidx.multidex:multidex:$dex_version"
 }
