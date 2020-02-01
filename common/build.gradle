@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion target_sdk_version
@@ -21,10 +20,8 @@ android {
 dependencies {
     // Projects
     api project(':common-http')
-    api project(':common-util')
     api project(':common-widget')
     // ITGungnir
-    api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
     api "com.github.ITGungnir:GAdapter:$adapter_version"
     api "com.github.ITGungnir.GRouter:router_api:$router_version"
     api "com.github.ITGungnir:GPermission:$permission_version"

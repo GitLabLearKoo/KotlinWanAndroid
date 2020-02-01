@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion target_sdk_version
+    buildToolsVersion build_tools_version
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+        // 配置参数到BuildConfig中：统一适配的屏幕尺寸
+        buildConfigField 'Float', 'SCREEN_WIDTH', screen_width
+        // 配置参数到BuildConfig中：是否使用设备上设置的字体大小
+        buildConfigField 'Boolean', "USE_SYSTEM_SP", use_system_sp
+    }
+}
+
+dependencies {
+    // Projects
+    api project(':common-http')
+    api project(':common-widget')
+    // ITGungnir
+    api "com.github.ITGungnir:GAdapter:$adapter_version"
+    api "com.github.ITGungnir.GRouter:router_api:$router_version"
+    api "com.github.ITGungnir:GPermission:$permission_version"
+    api "com.github.ITGungnir:GAdapter:$adapter_version"
+}

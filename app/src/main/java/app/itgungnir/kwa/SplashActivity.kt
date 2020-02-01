@@ -7,16 +7,14 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.dp2px
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import my.itgungnir.grouter.annotation.Route
-import my.itgungnir.grouter.api.Router
 import my.itgungnir.permission.GPermission
 import org.jetbrains.anko.*
 import java.util.concurrent.TimeUnit
 
-@Route(SplashActivity)
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +26,11 @@ class SplashActivity : AppCompatActivity() {
             return
         }
 
-        // 使用Kotlin-anko绘制界面
+        // 使用Kotlin-Anko绘制界面
         object : AnkoComponent<SplashActivity> {
             override fun createView(ui: AnkoContext<SplashActivity>): View = with(ui) {
                 verticalLayout {
-                    backgroundColor = this@SplashActivity.color(R.color.colorPure)
+                    backgroundColor = this@SplashActivity.color(R.color.colorTheme)
                     imageView {
                         imageResource = R.drawable.icon_developer
                         scaleType = ImageView.ScaleType.CENTER_INSIDE
@@ -65,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
      */
     private fun requestPermissions() {
         GPermission.with(this)
-            .showDialogAtPermissionRejection()
+            .showDefaultDialogsAtPermissionRejection()
             .onGranted { navigate() }
             .onDenied { finish() }
             .request(
@@ -81,10 +79,10 @@ class SplashActivity : AppCompatActivity() {
         // 标记应用已经启动
         App.isFirstRun = false
         // 跳转到MainActivity并结束当前页面
-        Router.instance.with(this)
-            .target(MainActivity)
-            .go()
-        finish()
+//        Router.instance.with(this)
+//            .target(MainActivity)
+//            .go()
+//        finish()
     }
 
     /**

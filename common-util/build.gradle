@@ -6,10 +6,14 @@ android {
     compileSdkVersion target_sdk_version
     buildToolsVersion build_tools_version
     defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
         // 配置参数到BuildConfig中：统一适配的屏幕尺寸
         buildConfigField 'Float', 'SCREEN_WIDTH', screen_width
         // 配置参数到BuildConfig中：是否使用设备上设置的字体大小
         buildConfigField 'Boolean', "USE_SYSTEM_SP", use_system_sp
+        // 配置参数到BuildConfig中：全局日志Tag
+        buildConfigField 'String', "LOG_TAG", "\"--KWA-->>\""
     }
 }
 
@@ -20,9 +24,12 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_compiler_version"
+    // ITGungnir
+    api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
     // Tools
     api "net.danlew:android.joda:$joda_version"
     api "com.google.code.gson:gson:$gson_version"
+    api "com.orhanobut:logger:$logger_version"
     api "com.tencent.bugly:crashreport:$bugly_sdk_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
 }
